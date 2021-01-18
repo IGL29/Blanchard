@@ -1,0 +1,170 @@
+.contacts-container {
+  position: relative;
+}
+
+.subtitle_font-weight-400 {
+  font-weight: 400;
+}
+
+.address {
+  font-style: normal;
+}
+
+.address-span {
+  display: block;
+}
+
+.container-contacts_position {
+  padding: 121px 0 112px;
+}
+
+.contacts-block {
+  position: relative;
+  width: 33%;
+  max-width: 524px;
+  min-width: 437px;
+}
+
+.map-block-mobile {
+  display: none;
+  height: 400px;
+}
+
+.contacts-block::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: calc(100% + 159px);
+  height: 100%;
+  border: 1px solid #CACACA;
+  z-index: 10;
+  background-color: #FFF;
+}
+
+.wrapper-form-contacts {
+  width: 77%;
+  min-width: 335px;
+  position: relative;
+  z-index: 15;
+}
+
+.address {
+  margin-bottom: 25px;
+}
+
+.contacts-form {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  margin-bottom: 38px;
+}
+
+.button_margin-0 {
+  margin: 0;
+  -ms-flex-item-align: start;
+      align-self: flex-start;
+}
+
+.section_margin-0 {
+  margin: 0;
+}
+
+.subtitle_margin {
+  margin-bottom: 17px;
+}
+
+.subtitle-contacts {
+  font-size: 23px;
+}
+
+.contacts-form__input {
+  height: 40px;
+  padding: 0 20px 0 20px;
+  border: 1px solid #333333;
+  border-radius: 100px;
+}
+
+.contacts-form__input:not(:last-of-type) {
+  margin-bottom: 23px;
+}
+
+.contacts-form__input:last-of-type {
+  margin-bottom: 21px;
+}
+
+.subtitle_margin-bottom {
+  margin-bottom: 18px;
+}
+
+.list-social__item {
+  display: inline-block;
+  width: 40px;
+  height: 40px;
+}
+
+.list-social__item:not(:last-child) {
+  margin-right: 17px;
+}
+
+.list-social__link {
+  display: inline-block;
+  width: 100%;
+  height: 100%;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+.list-social__link_background-1 {
+  background-image: url('../img/Whatsapp-Icon.svg');
+}
+
+.list-social__link_background-2 {
+  background-image: url('../img/Telegram_2019_Logo.svg');
+}
+
+/* .map-block {
+  flex-shrink: 2;
+  flex-basis: 1238px;
+  min-width: 338px;
+  height: 711px;
+} */
+
+.map-block {
+  height: 100%;
+  width: 68%;
+  right: 0;
+  position: absolute;
+  top: 0;
+  overflow: hidden;
+}
+
+.wrapper-contacts {
+  position: relative;
+  overflow: hidden;
+}
+
+[class*="ymaps-2"][class*="-ground-pane"] {
+  -webkit-filter: grayscale(1);
+          filter: grayscale(1);
+}
+
+.ymaps-2-1-78-map-bg {
+  background-image: none !important; 
+}
+
+.ymaps-2-1-78-copyright__wrap {
+  overflow: visible !important;
+}
+
+/* .block-right-contacts{
+  /* flex-shrink: 2;
+  flex-basis: 1238px;
+  min-width: 338px; */
+  /* height: 711px; */
+  /* height: 700px; */
