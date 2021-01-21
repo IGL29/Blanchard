@@ -6,23 +6,19 @@
   font-weight: 400;
 }
 
-.address {
+.form-container__address {
   font-style: normal;
 }
 
-.address-span {
+.form-container__span {
   display: block;
+  font-size: 24px;
+  font-weight: 600;
+  line-height: 32px;
 }
 
 .container-contacts_position {
-  padding: 121px 0 112px;
-}
-
-.contacts-block {
-  position: relative;
-  width: 33%;
-  max-width: 524px;
-  min-width: 437px;
+  padding: 125px 0 113px;
 }
 
 .map-block-mobile {
@@ -30,26 +26,32 @@
   height: 400px;
 }
 
-.contacts-block::after {
+.wrapper-contacts__form-container {
+  position: relative;
+  z-index: 5;
+  max-width: 544px;
+  min-width: 487px;
+  padding-top: 126px;
+  padding-right: 35px;
+  padding-bottom: 113px;
+  margin-right: 0;
+  -webkit-box-flex: 0;
+  -ms-flex: 0 0 29%;
+  flex: 0 0 29%;
+}
+
+.wrapper-contacts__form-container::after {
   content: '';
   position: absolute;
   top: 0;
   right: 0;
-  width: calc(100% + 159px);
+  z-index: -1;
+  width: calc(100% + 160px);
   height: 100%;
-  border: 1px solid #CACACA;
-  z-index: 10;
-  background-color: #FFF;
+  border: 1px solid #cacaca;
 }
 
-.wrapper-form-contacts {
-  width: 77%;
-  min-width: 335px;
-  position: relative;
-  z-index: 15;
-}
-
-.address {
+.form-container__address {
   margin-bottom: 25px;
 }
 
@@ -59,15 +61,16 @@
   display: flex;
   -webkit-box-orient: vertical;
   -webkit-box-direction: normal;
-      -ms-flex-direction: column;
-          flex-direction: column;
+  -ms-flex-direction: column;
+  flex-direction: column;
   margin-bottom: 38px;
+  width: 83%;
 }
 
 .button_margin-0 {
   margin: 0;
   -ms-flex-item-align: start;
-      align-self: flex-start;
+  align-self: flex-start;
 }
 
 .section_margin-0 {
@@ -128,43 +131,33 @@
   background-image: url('../img/Telegram_2019_Logo.svg');
 }
 
-/* .map-block {
-  flex-shrink: 2;
-  flex-basis: 1238px;
-  min-width: 338px;
-  height: 711px;
-} */
-
 .map-block {
-  height: 100%;
-  width: 68%;
-  right: 0;
-  position: absolute;
-  top: 0;
-  overflow: hidden;
+  -webkit-box-flex: 1;
+  -ms-flex: 1 1 100%;
+  flex: 1 1 100%;
 }
 
 .wrapper-contacts {
-  position: relative;
-  overflow: hidden;
+  max-width: 100%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  padding-right: 0;
+}
+
+.form-container_margin-left {
+  margin-left: calc((100vw - 1603px)/2 - 20px);
 }
 
 [class*="ymaps-2"][class*="-ground-pane"] {
   -webkit-filter: grayscale(1);
-          filter: grayscale(1);
+  filter: grayscale(1);
 }
 
 .ymaps-2-1-78-map-bg {
-  background-image: none !important; 
+  background-image: none !important;
 }
 
 .ymaps-2-1-78-copyright__wrap {
   overflow: visible !important;
 }
-
-/* .block-right-contacts{
-  /* flex-shrink: 2;
-  flex-basis: 1238px;
-  min-width: 338px; */
-  /* height: 711px; */
-  /* height: 700px; */

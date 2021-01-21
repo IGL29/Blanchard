@@ -1,3 +1,7 @@
+.main {
+  padding-top: 100px;
+}
+
 .title {
   margin-bottom: 15px;
   font-weight: 400;
@@ -23,8 +27,8 @@
   background-color: rgba(0, 0, 0, 0.9);
   visibility: hidden;
   -webkit-transform: translateX(-110%);
-      -ms-transform: translateX(-110%);
-          transform: translateX(-110%);
+  -ms-transform: translateX(-110%);
+  transform: translateX(-110%);
   -webkit-transition: visibility 0.4s, -webkit-transform 0.4s;
   transition: visibility 0.4s, -webkit-transform 0.4s;
   -o-transition: transform 0.4s, visibility 0.4s;
@@ -34,8 +38,8 @@
 
 .wrap-burger-menu-active {
   -webkit-transform: translateX(0);
-      -ms-transform: translateX(0);
-          transform: translateX(0);
+  -ms-transform: translateX(0);
+  transform: translateX(0);
   visibility: initial;
 }
 
@@ -68,8 +72,8 @@
 .nav-list-burger {
   -webkit-box-orient: vertical;
   -webkit-box-direction: normal;
-      -ms-flex-direction: column;
-          flex-direction: column;
+  -ms-flex-direction: column;
+  flex-direction: column;
 }
 
 .wrap-burger-menu__container {
@@ -78,8 +82,8 @@
   display: flex;
   -webkit-box-orient: vertical;
   -webkit-box-direction: normal;
-      -ms-flex-direction: column;
-          flex-direction: column;
+  -ms-flex-direction: column;
+  flex-direction: column;
   height: 100%;
   padding-bottom: 52px;
   padding-top: 98px;
@@ -89,7 +93,7 @@
   line-height: 62px;
 }
 
-.nav-list-burger:focus{
+.nav-list-burger:focus {
   outline: none;
 }
 
@@ -108,9 +112,9 @@
   font-weight: 700;
   font-size: 18px;
   background-color: transparent;
-  border: 2px solid #9D5CD0;
+  border: 2px solid #9d5cd0;
   border-radius: 100px;
-  color: #9D5CD0;
+  color: #9d5cd0;
   -webkit-transition: background-color 0.3s, color 0.3s, border-color 0.3s;
   -o-transition: background-color 0.3s, color 0.3s, border-color 0.3s;
   transition: background-color 0.3s, color 0.3s, border-color 0.3s;
@@ -124,29 +128,28 @@
   left: 0;
   width: 100%;
   height: 100%;
-  border: 3px solid #D1A9F0;
+  border: 3px solid #d1a9f0;
   border-radius: 100px;
   opacity: 0;
 }
 
 .button:hover {
-  background-color: #9D5CD0;
-  color: #FFF;
+  background-color: #9d5cd0;
+  color: #fff;
 }
-
 
 .button:active::before {
   opacity: 1;
 }
 
 .button:hover {
-  background-color: #9D5CD0;
-  color: #FFF;
+  background-color: #9d5cd0;
+  color: #fff;
 }
 
 .button:active {
-  background-color: #7943A4;
-  color: #FFF;
+  background-color: #7943a4;
+  color: #fff;
 }
 
 .button:after {
@@ -156,7 +159,7 @@
   height: 50%;
   top: 25%;
   left: 15%;
-  border: 2px solid #9D5CD0;
+  border: 2px solid #9d5cd0;
   opacity: 0;
   -webkit-transition: opacity 0.3s;
   -o-transition: opacity 0.3s;
@@ -169,11 +172,11 @@
 
 .burger-menu-button {
   -ms-flex-item-align: start;
-      align-self: flex-start;
+  align-self: flex-start;
   margin: 0;
   padding: 10px 92px 10px 106px;
   font-weight: 600;
-  color: #FFF;
+  color: #fff;
   background-image: url('../img/icon-personal-account.svg');
   background-repeat: no-repeat;
   background-position: left 86px top 22px;
@@ -181,7 +184,7 @@
 
 .title_color_white,
 .nav_color_white {
-  color: #FFF;
+  color: #fff;
 }
 
 .wrapper-form-active {
@@ -191,8 +194,8 @@
 .wrapper-form__form-active::after {
   opacity: 1;
   -webkit-transform: scaleX(1);
-      -ms-transform: scaleX(1);
-          transform: scaleX(1);
+  -ms-transform: scaleX(1);
+  transform: scaleX(1);
 }
 
 .wrapper-form__btn-search-active {
@@ -209,14 +212,14 @@
 }
 
 .swiper-container {
-  position: absolute !important;
+  position: absolute;
   height: 100%;
   width: 100%;
 }
 
 .swiper-hero .swiper-slide-active {
   -webkit-animation: pulse 15s linear alternate infinite;
-          animation: pulse 15s linear alternate infinite;
+  animation: pulse 15s linear alternate infinite;
 }
 
 .swiper-slide_background-1 {
@@ -243,54 +246,54 @@
 @-webkit-keyframes pulse {
   from {
     -webkit-transform: scale(1);
-            transform: scale(1);
+    transform: scale(1);
   }
 
   25% {
     -webkit-transform: scale(1.05);
-            transform: scale(1.05);
+    transform: scale(1.05);
   }
 
   50% {
     -webkit-transform: scale(1.10);
-            transform: scale(1.10);
+    transform: scale(1.10);
   }
 
   75% {
     -webkit-transform: scale(1.15);
-            transform: scale(1.15);
+    transform: scale(1.15);
   }
 
   to {
     -webkit-transform: scale(1.20);
-            transform: scale(1.20);
+    transform: scale(1.20);
   }
 }
 
 @keyframes pulse {
   from {
     -webkit-transform: scale(1);
-            transform: scale(1);
+    transform: scale(1);
   }
 
   25% {
     -webkit-transform: scale(1.05);
-            transform: scale(1.05);
+    transform: scale(1.05);
   }
 
   50% {
     -webkit-transform: scale(1.10);
-            transform: scale(1.10);
+    transform: scale(1.10);
   }
 
   75% {
     -webkit-transform: scale(1.15);
-            transform: scale(1.15);
+    transform: scale(1.15);
   }
 
   to {
     -webkit-transform: scale(1.20);
-            transform: scale(1.20);
+    transform: scale(1.20);
   }
 }
 
@@ -299,50 +302,49 @@
   margin-bottom: 92px;
   z-index: 3;
   width: 597px;
-  -webkit-user-select: none;
-     -moz-user-select: none;
-      -ms-user-select: none;
-          user-select: none;
 }
 
 .section-hero__title {
   margin-bottom: 20px;
-  font-weight: bold;
+  font-weight: 700;
   font-size: 72px;
   line-height: 83px;
-  color: #FFFFFF;
+  color: #ffffff;
 }
 
 .section-hero__paragraph {
-  font-weight: bold;
+  font-weight: 700;
   font-size: 18px;
   line-height: 30px;
-  color: #FFFFFF;
+  color: #ffffff;
 }
 
 .section-hero__button {
   position: relative;
   z-index: 5;
   padding: 22px 33px;
-  font-weight: bold;
+  font-weight: 700;
   font-size: 18px;
-  background: #9D5CD0;
-  border: 3px solid #9D5CD0;
+  background: #9d5cd0;
+  border: 3px solid #9d5cd0;
   border-radius: 100px;
-  color: #FFF;
+  color: #fff;
+  -webkit-transition: border 0.3s, background-color 0.3s;
+  -o-transition: border 0.3s, background-color 0.3s;
+  transition: border 0.3s, background-color 0.3s;
   cursor: pointer;
   outline: none;
 }
 
 .section-hero__button:hover {
-  border: 3px solid #D1A9F0;
+  border: 3px solid #d1a9f0;
 }
 
 .section-hero__button:focus {
-  border: 3px solid #7943A4;
+  border: 3px solid #7943a4;
 }
 
 .section-hero__button:active {
-  background: #7943A4;
-  border: 3px solid #D1A9F0;
+  background: #7943a4;
+  border: 3px solid #d1a9f0;
 }

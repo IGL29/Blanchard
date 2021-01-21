@@ -23,7 +23,7 @@
   font-family: 'Open-Sans';
   src: url('../fonts/OpenSans-Bold.woff2') format('woff2'),
     url('../fonts/OpenSans-Bold.woff') format('woff');
-  font-weight: bold;
+  font-weight: 700;
 }
 
 @font-face {
@@ -66,14 +66,13 @@ li {
   list-style-type: none;
 }
 
-h1,
-h2,
-h3,
-p {
+.h2,
+.h3,
+.p {
   margin: 0;
 }
 
-ul {
+.ul {
   margin: 0;
   padding: 0;
 }
@@ -99,6 +98,7 @@ fieldset {
   position: absolute !important;
   clip: rect(1px 1px 1px 1px);
   clip: rect(1px, 1px, 1px, 1px);
+  margin: 0;
   padding: 0 !important;
   border: 0 !important;
   height: 1px !important;
@@ -135,8 +135,4 @@ input[type=number]::-webkit-outer-spin-button {
   padding: 0 20px;
 }
 
-.container_width-1920 {
-  max-width: 1920px;
-  margin: 0 auto;
-}
 
