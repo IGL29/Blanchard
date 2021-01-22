@@ -30,7 +30,6 @@
   const headerRow1 = document.querySelector('.header__row-1');
   const nav = document.querySelector('.nav');
   const navList = document.querySelector('.nav__list');
-  const header = document.querySelector('.header');
   const wrapperFormContacts = document.querySelector('.wrapper-contacts__form-container');
   let swiperGallery = document.querySelector('.container-gallery');
   let selectedCategoryTab = 3;
@@ -7253,21 +7252,24 @@
 
   document.querySelector('.contacts-form').addEventListener('submit', (ev)=> {
     ev.preventDefault();
-    console.log('Сформирован');
+    let ValueInputName = document.querySelector('.contacts-form__input[name="firstName"]').value;
+    let ValueInputNumber = document.querySelector('.contacts-form__input[name="telephoneNumber"]').value;
+
     let xhr = new XMLHttpRequest();
-    xhr.open('POST', '../handler.php');
-    xhr.send();
+    xhr.open('POST', '/handler.php');
+    xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
+    xhr.send('firstName=' + encodeURIComponent(ValueInputName) + '&telephoneNumber=' + encodeURIComponent(ValueInputNumber));
 
     xhr.addEventListener('load', ()=>{
       let responseText = null;
-      if(xhr.status != 200 && xhr.response == 'true') {
-        responseText = 'Произошла ошибка при запросе!'
-        console.log('Произошла ошибка!');
-        createModalResponse (responseText);
-      } else {
-        responseText = 'Заявка отправлена! Ожидайте звонок.'
-        console.log('заявка отправлена');
-        createModalResponse (responseText);
+      if(xhr.readyState == 4) {
+        if(xhr.status != 200 && xhr.readyState !== 4 && xhr.response !== 'true') {
+          responseText = 'Произошла ошибка при запросе!'
+          createModalResponse (responseText);
+        } else {
+          responseText = 'Заявка отправлена! Ожидайте звонок.'
+          createModalResponse (responseText);
+        }
       }
 
       document.querySelector('.contacts-form__input[name="firstName"]').value = '';

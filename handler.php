@@ -8,8 +8,6 @@ $number = htmlspecialchars($number);
 $name = urldecode($name);
 $number = urldecode($number);
 
-mail('blanchard-2021@mail.ru', 'Заявка с сайта', 'Имя: ' . $name . ' Номер телефона: ' . $number);
-
-if(mail('blanchard-2021@mail.ru', 'Заявка с сайта', 'Имя: ' . $name . ' Номер телефона: ' . $number)) {
+if(mail("blanchard-2021@mail.ru", "Заявка с сайта", "Имя: " . $name . "\nНомер телефона: " . $number)) {
     echo 'true';
 }
