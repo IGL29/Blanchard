@@ -6614,7 +6614,7 @@
             checkingWidth(imagePath, imageDescription);
             document.querySelector('.column-description').style.opacity = '1';
             clearTimeout(timerId);
-          }, 300);
+          }, 500);
           break;
         }
       }
