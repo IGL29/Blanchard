@@ -7251,5 +7251,43 @@
     }
   }
 
+  document.querySelector('.contacts-form').addEventListener('submit', (ev)=> {
+    ev.preventDefault();
+    console.log('Сформирован');
+    let xhr = new XMLHttpRequest();
+    xhr.open('POST', '../handler.php');
+    xhr.send();
+
+    xhr.addEventListener('load', ()=>{
+      let responseText = null;
+      if(xhr.status != 200 && xhr.response == 'true') {
+        responseText = 'Произошла ошибка при запросе!'
+        console.log('Произошла ошибка!');
+        createModalResponse (responseText);
+      } else {
+        responseText = 'Заявка отправлена! Ожидайте звонок.'
+        console.log('заявка отправлена');
+        createModalResponse (responseText);
+      }
+
+      document.querySelector('.contacts-form__input[name="firstName"]').value = '';
+      document.querySelector('.contacts-form__input[name="telephoneNumber"]').value = '';
+      let timer = setTimeout(() => {
+        document.querySelector('.modal-response').remove();
+        clearTimeout(timer);
+      }, 3000);
+    })
+  })
+
+  function createModalResponse (responseText) {
+    let wrap = document.createElement('div');
+    let text = document.createElement('p');
+    let sectionContacts = document.querySelector('.section-contacts');
+    wrap.classList.add('modal-response');
+    text.classList.add('modal-response__text');
+    text.textContent = responseText;
+    wrap.append(text);
+    sectionContacts.append(wrap);
+  }
 
 })();

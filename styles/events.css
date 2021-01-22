@@ -23,7 +23,7 @@
   flex: 1 1 30.33%;
   min-width: 290px;
   max-width: 500px;
-  min-height: 700px;
+  height: 700px;
   margin-bottom: 50px;
   margin: 13px;
   -webkit-transform: rotateY(0);

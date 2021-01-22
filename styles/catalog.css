@@ -415,7 +415,7 @@
   transition: background-image 0.3s, transform 0.5s, -webkit-transform 0.5s;
 }
 
-.ui-accordion-header-icon::before {
+.dropdown-list-catalog__accordion-header > .ui-accordion-header-icon::before {
   content: '';
   position: absolute;
   top: 0;
@@ -454,7 +454,7 @@
   background-image: url('../img/dropdown-arrow-hover.svg');
 }
 
-.ui-accordion-header:active .ui-accordion-header-icon::after {
+.dropdown-list-catalog__accordion-header > .ui-accordion-header:active .ui-accordion-header-icon::after {
   background-image: url('../img/dropdown-arrow-active.svg');
 }
 

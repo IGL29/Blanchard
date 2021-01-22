@@ -135,6 +135,7 @@
   overflow: hidden;
   -ms-flex-preferred-size: 1450px;
   flex-basis: 1450px;
+  padding: 2px;
 }
 
 .partners-wrapper {

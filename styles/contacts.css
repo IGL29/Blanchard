@@ -31,7 +31,7 @@
   z-index: 5;
   max-width: 544px;
   min-width: 487px;
-  padding-top: 126px;
+  padding-top: 125px;
   padding-right: 35px;
   padding-bottom: 113px;
   margin-right: 0;
@@ -160,4 +160,24 @@
 
 .ymaps-2-1-78-copyright__wrap {
   overflow: visible !important;
+}
+
+.modal-response {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  z-index: 30;
+  width: 30%;
+  margin: auto;
+  margin-top: -100px;
+  margin-left: -15%;
+  background-color: #333333;
+  border-radius: 15px;
+  opacity: 0.9;
+}
+
+.modal-response__text {
+  color: #FFF;
+  font-size: 21px;
+  text-align: center;
 }
