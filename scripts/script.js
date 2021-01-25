@@ -14,7 +14,6 @@
   const listCardsEvents = document.querySelector('.list-cards');
   const textCatalogCountry = document.querySelector('.category-paragraph');
   const categoriesCheackBoxes = document.querySelector('.categories-form');
-  const accordionCategories = document.querySelector('.accordion-categories');
   const galleryImage = document.querySelectorAll('.wrapper-gallery-image');
   const picture = document.querySelector('.picture');
   const categoriesForm = document.querySelector('.categories-form');
@@ -30,7 +29,8 @@
   const headerRow1 = document.querySelector('.header__row-1');
   const nav = document.querySelector('.nav');
   const navList = document.querySelector('.nav__list');
-  const wrapperFormContacts = document.querySelector('.wrapper-contacts__form-container');
+  const categoriesWrapper = document.querySelector('.categories-wrapper');
+  let scrollY = null;
   let swiperGallery = document.querySelector('.container-gallery');
   let selectedCategoryTab = 3;
   let defaultButton = 'Доменико Гирландайо';
@@ -59,8 +59,10 @@
   window.addEventListener('resize', function () {
     showNavigation();
     optimizeSizeSwiper();
+    initialCategoriesAccordion ();
     creatingColumnsCategory();
-    optimizationСontactSection();
+    optimizelistCard ();
+    optimizeSwiperEdition ();
   })
 
   function optimizeSizeSwiper() {
@@ -143,88 +145,118 @@
       }
     });
   }
-
-  if (document.documentElement.clientWidth > 576) {
-    let mySwiperEdition = new Swiper('.swiper-container-editions', {
-
-      direction: 'horizontal',
-      loop: true,
-      allowTouchMove: false,
-
-      pagination: {
-        el: '.swiper-pagination-editions',
-        type: 'fraction',
-        renderFraction: function (currentClass, totalClass) {
-          return '<span class="' + currentClass + '"></span>' +
-            '<span aria-label="из"> / </span>' +
-            '<span class="' + totalClass + '"></span>';
-        },
-      },
-
-      keyboard: {
-        enabled: true,
-        onlyInViewport: true,
-      },
-
-      navigation: {
-        nextEl: '.swiper-button-next-edition',
-        prevEl: '.swiper-button-prev-edition',
-      },
-
-      a11y: {
-        prevSlideMessage: 'Предыдущий слайд',
-        nextSlideMessage: 'Следующий слайд',
-      },
-
-      breakpoints: {
-
-        1025: {
-
-          slidesPerView: 3,
-
-          slidesPerGroup: 3,
-
-          spaceBetween: 48,
-
-          slidesPerColumn: 1,
-
-          autoHeight: false,
-
-          centeredSlides: false,
-
-          initialSlide: 0,
-        },
-
-        769: {
-          slidesPerView: 2,
-
-          slidesPerGroup: 2,
-
-          spaceBetween: 48,
-
-          autoHeight: false,
-
-          centeredSlides: false,
-
-          initialSlide: 0,
-        },
-
-        576: {
-          slidesPerView: 2,
-
-          slidesPerGroup: 2,
-
-          spaceBetween: 35,
-
-          autoHeight: false,
-
-          centeredSlides: false,
-
-          initialSlide: 0,
-        },
+  
+  function optimizeSwiperEdition () {
+      if (document.documentElement.clientWidth > 576) {
+        document.querySelector('.container-editions').classList.add('swiper-container-editions');
+        initSwiperEdition ();
+      } else if ( document.querySelector('.container-editions').classList.contains('swiper-container-editions')) {
+        document.querySelector('.container-editions').classList.remove('swiper-container-editions');
+        removeSwiperEdition ();
       }
-    });
-  }
+    }
+
+  function initSwiperEdition () {
+      let mySwiperEdition = new Swiper('.swiper-container-editions', {
+
+        direction: 'horizontal',
+        loop: true,
+        allowTouchMove: false,
+
+        pagination: {
+          el: '.swiper-pagination-editions',
+          type: 'fraction',
+          renderFraction: function (currentClass, totalClass) {
+            return '<span class="' + currentClass + '"></span>' +
+              '<span aria-label="из"> / </span>' +
+              '<span class="' + totalClass + '"></span>';
+          },
+        },
+
+        updateOnWindowResize: false,
+
+        keyboard: {
+          enabled: true,
+          onlyInViewport: true,
+        },
+
+        navigation: {
+          nextEl: '.swiper-button-next-edition',
+          prevEl: '.swiper-button-prev-edition',
+        },
+
+        a11y: {
+          prevSlideMessage: 'Предыдущий слайд',
+          nextSlideMessage: 'Следующий слайд',
+        },
+
+        breakpoints: {
+
+          1025: {
+
+            slidesPerView: 3,
+
+            slidesPerGroup: 3,
+
+            spaceBetween: 48,
+
+            slidesPerColumn: 1,
+
+            autoHeight: false,
+
+            centeredSlides: false,
+
+            initialSlide: 0,
+          },
+
+          769: {
+            slidesPerView: 2,
+
+            slidesPerGroup: 2,
+
+            spaceBetween: 48,
+
+            autoHeight: false,
+
+            centeredSlides: false,
+
+            initialSlide: 0,
+          },
+
+          576: {
+            slidesPerView: 2,
+
+            slidesPerGroup: 2,
+
+            spaceBetween: 35,
+
+            autoHeight: false,
+
+            centeredSlides: false,
+
+            initialSlide: 0,
+          },
+        }
+      });
+    }
+
+    function removeSwiperEdition () {
+     let swiperWrapperEditions = document.querySelector('.swiper-wrapper-editions');
+     swiperWrapperEditions.removeAttribute('id');
+     swiperWrapperEditions.removeAttribute('style');
+     swiperWrapperEditions.removeAttribute('aria-live');
+     let editionCards = document.querySelectorAll('.edition-card');
+     for(let i = 0; editionCards.length > i; i++) {
+       if(editionCards[i].classList.contains('swiper-slide-duplicate')) {
+        editionCards[i].remove();
+        continue;
+       }
+       editionCards[i].removeAttribute('style');
+       editionCards[i].removeAttribute('data-swiper-slide-index');
+       editionCards[i].removeAttribute('role');
+       editionCards[i].removeAttribute('aria-label');
+     }
+   }
 
   function initializationSwiperPartners() {
     let mySwiperPartners = new Swiper('.swiper-container-partners', {
@@ -6434,20 +6466,45 @@
     }
   });
 
-  $(function () {
+  function initialCategoriesAccordion () {
     if (document.documentElement.clientWidth <= 576) {
+      if(!categoriesWrapper.classList.contains('accordion-categories')) {
+        categoriesWrapper.classList.add('accordion-categories')
+      }
       $(".accordion-categories").accordion({
         collapsible: true,
         heightStyle: 'content',
         active: true
       });
-    }
-  });
+      checkingCheckbox();
 
-  if (document.documentElement.clientWidth <= 576) {
-    ymaps.ready(initMobile);
-  } else {
-    ymaps.ready(init);
+      categoriesCheackBoxes.addEventListener('change', checkingCheckbox);
+    } else if (categoriesWrapper.classList.contains('accordion-categories')) {
+      $( ".accordion-categories" ).accordion( "destroy" );
+      categoriesWrapper.classList.remove('accordion-categories')
+      categoriesCheackBoxes.removeEventListener('change', checkingCheckbox);
+      
+      if($('.wrapper-cheacked-cheackbox') !== null) {
+        removeWrapperCheckbox ();
+      }
+    }
+  }
+  
+  
+  function removeWrapperCheckbox () {
+    let checkboxes = document.querySelectorAll('.wrapper-cheacked-cheackbox');
+    let countChekboxes = checkboxes.length;
+    for(let i = 0; countChekboxes > i; i++ ) {
+      categoriesForm.append(checkboxes[i].children[0]);
+      checkboxes[i].remove();
+    }
+  }
+  function optimizationMap () {
+    if (document.documentElement.clientWidth <= 576) {
+      ymaps.ready(initMobile);
+    } else {
+      ymaps.ready(init);
+    }
   }
 
   function init() {
@@ -6727,57 +6784,54 @@
       theme: 'gray',
     });
 
+  } else if (document.documentElement.clientWidth > 576) {
+
+    tippy('.span-tooltip-1', {
+      content: 'Пример современных тенденций - современная методология разработки',
+      inertia: true,
+      theme: 'gray-tablet',
+    });
+
+    tippy('.span-tooltip-2', {
+      content: 'В стремлении повысить качество',
+      inertia: true,
+      theme: 'gray-tablet',
+    });
+
+    tippy('.span-tooltip-3', {
+      content: 'Приятно, граждане, наблюдать, как сделанные на базе аналитики выводы вызывают у вас эмоции',
+      inertia: true,
+      theme: 'gray-tablet',
+    });
+
+    for (let i = 0; tooltipArray.length > i; i++) {
+      tooltipArray[i].classList.add('project-text__span-tooltip-tablet');
+    }
   } else {
 
-    if (document.documentElement.clientWidth > 576) {
+    tippy('.span-tooltip-1', {
+      content: 'Пример современных тенденций - современная методология разработки',
+      inertia: true,
+      theme: 'gray-tablet',
+    });
 
-      tippy('.span-tooltip-1', {
-        content: 'Пример современных тенденций - современная методология разработки',
-        inertia: true,
-        theme: 'gray-tablet',
-      });
+    tippy('.span-tooltip-2', {
+      content: 'В стремлении повысить качество',
+      inertia: true,
+      theme: 'gray-tablet',
+    });
 
-      tippy('.span-tooltip-2', {
-        content: 'В стремлении повысить качество',
-        inertia: true,
-        theme: 'gray-tablet',
-      });
+    tippy('.span-tooltip-4', {
+      content: 'Приятно, граждане, наблюдать, как сделанные на базе аналитики выводы вызывают у вас эмоции',
+      inertia: true,
+      theme: 'gray-tablet',
+    });
 
-      tippy('.span-tooltip-3', {
-        content: 'Приятно, граждане, наблюдать, как сделанные на базе аналитики выводы вызывают у вас эмоции',
-        inertia: true,
-        theme: 'gray-tablet',
-      });
-
-      for (let i = 0; tooltipArray.length > i; i++) {
-        tooltipArray[i].classList.add('project-text__span-tooltip-tablet');
-      }
-
-    } else {
-
-      tippy('.span-tooltip-1', {
-        content: 'Пример современных тенденций - современная методология разработки',
-        inertia: true,
-        theme: 'gray-tablet',
-      });
-
-      tippy('.span-tooltip-2', {
-        content: 'В стремлении повысить качество',
-        inertia: true,
-        theme: 'gray-tablet',
-      });
-
-      tippy('.span-tooltip-4', {
-        content: 'Приятно, граждане, наблюдать, как сделанные на базе аналитики выводы вызывают у вас эмоции',
-        inertia: true,
-        theme: 'gray-tablet',
-      });
-
-      for (let i = 0; tooltipArray.length > i; i++) {
-        tooltipArray[i].classList.add('project-text__span-tooltip-tablet');
-      }
+    for (let i = 0; tooltipArray.length > i; i++) {
+      tooltipArray[i].classList.add('project-text__span-tooltip-tablet');
     }
   }
+  
 
   $(document).ready(function () {
     $("#nav").on("click", "a", function (event) {
@@ -6802,8 +6856,7 @@
         navPresentInHeader = true;
       }
       if (navPresentInHeader == true && document.documentElement.clientWidth <= 1024) {
-        let burgerMenuContainer = document.querySelector('.wrap-burger-menu__container');
-        burgerMenuContainer.insertBefore(nav, linkPersonalAccountBurger);
+        burgerMenu.insertBefore(nav, linkPersonalAccountBurger);
         navLink.forEach(function (elem) {
           elem.classList.add('nav-burger__link');
         });
@@ -6941,42 +6994,73 @@
     }
   });
 
-  if (document.documentElement.clientWidth <= 576) {
+  function optimizelistCard () {
+    if (document.documentElement.clientWidth <= 576 && document.querySelector('.swiper-container-cards') == null) {
 
-    let swiperContainer = document.createElement('div');
-    let swiperPagination = document.createElement('div');
-    let containerListCard = document.querySelector('.container-events');
-    swiperContainer.classList.add('swiper-container-cards');
-    listCardsEvents.classList.add('swiper-wrapper');
-    listCardsEvents.classList.remove('list-cards', 'list-cards_after');
+      let swiperContainer = document.createElement('div');
+      let swiperPagination = document.createElement('div');
+      let containerListCard = document.querySelector('.container-events');
+      swiperContainer.classList.add('swiper-container-cards');
+      listCardsEvents.classList.add('swiper-wrapper');
+      listCardsEvents.classList.remove('list-cards', 'list-cards_after');
 
-    swiperPagination.classList.add('swiper-pagination-cards');
+      swiperPagination.classList.add('swiper-pagination-cards');
 
-    swiperContainer.append(listCardsEvents, swiperPagination);
-    containerListCard.append(swiperContainer);
-    let lengthCards = listCardsEvents.children.length;
+      swiperContainer.append(listCardsEvents, swiperPagination);
+      containerListCard.append(swiperContainer);
+      let lengthCards = listCardsEvents.children.length;
 
-    for (let i = 0; lengthCards > i; i++) {
-      let wrapItem = document.createElement('div');
-      listCardsEvents.children[i].classList.remove('list-cards__item_display', 'list-cards__item_transform-rotateY-90', 'list-cards__item', 'list-cards__item_border');
-      wrapItem.innerHTML = listCardsEvents.children[i].innerHTML;
-      wrapItem.classList.add('list-cards__item_border', 'list-cards__item_width');
-      listCardsEvents.children[i].innerHTML = '';
-      listCardsEvents.children[i].append(wrapItem);
-      listCardsEvents.children[i].classList.add('swiper-slide', 'swiper-slide-events');
-    };
+      for (let i = 0; lengthCards > i; i++) {
+        let wrapItem = document.createElement('div');
+        listCardsEvents.children[i].classList.remove('list-cards__item_display', 'list-cards__item_transform-rotateY-90', 'list-cards__item', 'list-cards__item_border');
+        wrapItem.innerHTML = listCardsEvents.children[i].innerHTML;
+        wrapItem.classList.add('list-cards__item_border', 'list-cards__item_width');
+        listCardsEvents.children[i].innerHTML = '';
+        listCardsEvents.children[i].append(wrapItem);
+        listCardsEvents.children[i].classList.add('swiper-slide', 'swiper-slide-events');
+      };
 
-    let SwiperListCards = new Swiper('.swiper-container-cards', {
+      let SwiperListCards = new Swiper('.swiper-container-cards', {
 
-      direction: 'horizontal',
-      pagination: {
-        el: '.swiper-pagination-cards',
-        clickable: true,
-      },
-      loop: true,
-      initialSlide: 0,
-      spaceBetween: 15,
-    });
+        direction: 'horizontal',
+        pagination: {
+          el: '.swiper-pagination-cards',
+          clickable: true,
+        },
+        loop: true,
+        initialSlide: 0,
+        spaceBetween: 15,
+      });
+    } else if (document.documentElement.clientWidth > 576 && document.querySelector('.swiper-container-cards') !== null) {
+      let items = document.querySelectorAll('.swiper-slide-events');
+      let list = document.querySelector('.swiper-container-cards').children[0];
+      list.classList.add('list-cards');
+      list.classList.remove('swiper-wrapper');
+      list.removeAttribute('id');
+      list.removeAttribute('style');
+      list.removeAttribute('aria-live');
+
+      for (let i = 0; items.length > i; i++) {
+        if(items[i].classList.contains('swiper-slide-duplicate')) {
+          items[i].remove();
+          continue;
+        }
+        items[i].innerHTML = items[i].children[0].innerHTML;
+        items[i].classList.remove('swiper-slide', 'swiper-slide-events','swiper-slide-duplicate', 'swiper-slide-prev', 'swiper-slide-active', 'swiper-slide-next', 'swiper-slide-duplicate-active', 'swiper-slide-duplicate-prev');
+        items[i].classList.add('list-cards__item_display', 'list-cards__item_transform-rotateY-90', 'list-cards__item', 'list-cards__item_border');
+        items[i].removeAttribute('role');
+        items[i].removeAttribute('data-swiper-slide-index');
+        items[i].removeAttribute('aria-label');
+        items[i].removeAttribute('style');
+      }
+      let container = document.querySelector('.container-events');
+      container.insertBefore(list, buttonShowEvents);
+      document.querySelector('.swiper-container-cards').remove();
+
+      if(buttonShowEvents.classList.contains('button_events_display-none')) {
+        buttonShowEvents.classList.remove('button_events_display-none');
+       }
+    }
   }
 
   const element = document.querySelector('.js-choice');
@@ -7003,27 +7087,30 @@
   galleryImage.forEach(function (item) {
     item.addEventListener('click', function (ev) {
 
-      let picturePath = ev.target.querySelector('.gallery-image').attributes.src.value;
-      let pictureAlt = ev.target.querySelector('.gallery-image').attributes.alt.value;
-      let pictureId = this.getAttribute('data-id');
+      const picturePath = ev.target.querySelector('.gallery-image').attributes.src.value;
+      const pictureAlt = ev.target.querySelector('.gallery-image').attributes.alt.value;
+      const pictureId = this.getAttribute('data-id');
 
       if (!document.querySelector('.modal-window')) {
 
-        let modalWindow = document.createElement('div');
-        let modalBlockImage = document.createElement('div');
-        let modalImage = document.createElement('img');
-        let modalBlockDescripton = document.createElement('div');
-        let modalWrapperText = document.createElement('div');
-        let modalTitlePainter = document.createElement('h3');
-        let modalTitleNamePainter = document.createElement('span');
-        let modalTitleNameImage = document.createElement('span');
-        let modalTitleYearImage = document.createElement('span');
-        let modalImageDescription = document.createElement('p');
-        let buttonCloseWindow = document.createElement('button');
-
+        const modalWindow = document.createElement('div');
+        const modalBlockImage = document.createElement('div');
+        const modalImage = document.createElement('img');
+        const modalBlockDescripton = document.createElement('div');
+        const modalWrapperText = document.createElement('div');
+        const modalTitlePainter = document.createElement('h3');
+        const modalTitleNamePainter = document.createElement('span');
+        const modalTitleNameImage = document.createElement('span');
+        const modalTitleYearImage = document.createElement('span');
+        const modalImageDescription = document.createElement('p');
+        const buttonCloseWindow = document.createElement('button');
         const bottomLayerModal = document.createElement('div');
         bottomLayerModal.classList.add('bottom-layer-modal-window');
-        body.classList.add('body_position-relative');
+        if(document.documentElement.clientWidth > 576) {
+          body.classList.add('body_position-relative');
+        } else {
+          main.style.position = 'relative';
+        }
         main.append(bottomLayerModal);
 
         modalWindow.classList.add('swiper-wrapper-gallery__modal-window', 'modal-window');
@@ -7039,11 +7126,18 @@
         buttonCloseWindow.classList.add('modal-window__btn-close');
 
         buttonCloseWindow.addEventListener('click', function () {
-          if (body.classList.contains('body_position-relative')) {
             let bottomLayerModal = document.querySelector('.bottom-layer-modal-window');
+            main.style.position = '';
             bottomLayerModal.remove();
-            body.classList.remove('body_position-relative', 'modal-window-active');
-          }
+            if(document.documentElement.clientWidth <= 576) {
+              document.body.style.position = '';
+              document.body.style.top = '';
+              document.body.style.width = '';
+              body.style.overflow = '';
+              window.scrollTo(0, scrollY);
+            } else {
+              body.classList.remove('body_position-relative', 'modal-window-active');
+            }
           let modalWindow = document.querySelector('.modal-window');
           document.querySelector('.text-gallery').classList.remove('text-gallery_opacity-0');
           modalWindow.classList.remove('modal-window_opacity-1');
@@ -7071,14 +7165,22 @@
             block: 'start',
             behavior: 'smooth',
           });
+          clearTimeout(timerId);
+          timerId = setTimeout (function(){
+            scrollY = window.scrollY;
+            const innerWidth = window.innerWidth;
+            body.style.position = 'fixed';
+            body.style.overflow = 'hidden';
+            body.style.top = `-${scrollY}px`;
+            body.style.width = `${innerWidth}px`;
+          }, 500);
         } else {
           swiperGallery.scrollIntoView({
             block: 'center',
             behavior: 'smooth',
           });
+          body.classList.add('modal-window-active');
         }
-
-        body.classList.add('modal-window-active');
       }
       document.querySelector('.modal-window').classList.add('modal-window_opacity-1');
       new SimpleBar(document.querySelector('.modal-window__wrapper-text'));
@@ -7104,25 +7206,25 @@
       }
     }
     modalImage.setAttribute('alt', pictureAlt);
-  }
+  };
 
   function creatingColumnsCategory() {
-    if (document.documentElement.clientWidth <= 768 && document.documentElement.clientWidth > 576) {
+    if (document.documentElement.clientWidth <= 768 && document.documentElement.clientWidth > 576 && document.querySelector('.categories-column') == null) {
       let countColumn = 3;
       let countOfElements = categoriesForm.childElementCount;
       let countElementsInColumn = Math.ceil(countOfElements / countColumn);
       creatingWrappers(countColumn, countElementsInColumn);
-    } else if (document.documentElement.clientWidth <= 576 && document.querySelector('.categories-column') !== null) {
+    } else if ((document.documentElement.clientWidth <= 576 || document.documentElement.clientWidth > 768) && document.querySelector('.categories-column') !== null) {
       let columns = document.querySelectorAll('.categories-column');
-      for (let i = 0; columns.childElementCount > i; i++) {
-        let column = columns.children[i];
-        for (let i = 0; column[i] > i; i++) {
-          categoriesForm.append(column[i]);
+      for (let i = 0; columns.length > i; i++) {
+        let column = columns[i];
+        while (column.childElementCount !== 0) {
+          categoriesForm.append(column.childNodes[0]);
         }
-        columns.children[0].remove();
+        column.remove();
       }
-    }
-  }
+    } 
+  };
 
   function creatingWrappers(countColumn, countElementsInColumn) {
     for (let i = 1; countColumn >= i; i++) {
@@ -7135,55 +7237,50 @@
       }
       categoriesForm.append(columnWrap);
     }
-  }
+  };
 
-  if (document.documentElement.clientWidth <= 576) {
-    checkingCheckbox();
+  let inputs = document.querySelectorAll('.checkbox-wrapper__input');
 
-    categoriesCheackBoxes.addEventListener('change', checkingCheckbox);
+  function checkingCheckbox() {
+    for (let i = 0; inputs.length > i; i++) {
+      if (inputs[i].checked && !inputs[i].parentNode.parentNode.classList.contains('active')) {
+        let wrapSelectedCheckbox = document.createElement('div');
+        let buttonDeleteCheckbox = document.createElement('button');
 
-    function checkingCheckbox() {
-      for (let i = 0; categoriesCheackBoxes.length > i; i++) {
-        if (categoriesCheackBoxes[i].checked) {
-          let wrapSelectedCheckbox = document.createElement('div');
-          let buttonDeleteCheckbox = document.createElement('button');
+        wrapSelectedCheckbox.classList.add('wrapper-cheacked-cheackbox', 'active');
+        buttonDeleteCheckbox.classList.add('btn-delete-cheackbox')
 
-          wrapSelectedCheckbox.classList.add('wrapper-cheacked-cheackbox');
-          buttonDeleteCheckbox.classList.add('btn-delete-cheackbox')
-
-          wrapSelectedCheckbox.append(categoriesCheackBoxes[i].parentNode);
-          wrapSelectedCheckbox.append(buttonDeleteCheckbox);
-          accordionCategories.after(wrapSelectedCheckbox);
-
-          break;
-        }
+        wrapSelectedCheckbox.append(inputs[i].parentNode);
+        wrapSelectedCheckbox.append(buttonDeleteCheckbox);
+        categoriesWrapper.after(wrapSelectedCheckbox);
       }
-      checkingDeletedCheckbox()
     }
+    checkingDeletedCheckbox();
+  };
 
-    function checkingDeletedCheckbox() {
-      let wrapperCheackedCheackbox = document.querySelectorAll('.wrapper-cheacked-cheackbox');
-      wrapperCheackedCheackbox.forEach(function (item) {
-        item.addEventListener('click', removeCheckbox);
-      });
-    }
+  function checkingDeletedCheckbox() {
+    let wrapperCheackedCheackbox = document.querySelectorAll('.wrapper-cheacked-cheackbox');
+    wrapperCheackedCheackbox.forEach(function (item) {
+      item.addEventListener('click', removeCheckbox);
+    });
+  };
 
-    function removeCheckbox(ev) {
+  function removeCheckbox(ev) {
 
-      for (let i = 0; this.children.length > i; i++) {
-        if (ev.target == this.children[i] || ev.target.parentElement == this.children[i]) {
+    for (let i = 0; this.children.length > i; i++) {
+      if (ev.target == this.children[i] || ev.target.parentElement == this.children[i]) {
 
-          let checkboxWrapper = this.querySelector('.checkbox-wrapper');
+        let checkboxWrapper = this.querySelector('.checkbox-wrapper');
 
-          if (ev.target.classList.contains('btn-delete-cheackbox')) {
-            let input = this.querySelector('.checkbox-wrapper__input');
-            input.checked = false;
-          }
-          categoriesForm.append(checkboxWrapper);
-          this.remove();
-          this.removeEventListener('click', removeCheckbox);
-          break;
+        if (ev.target.classList.contains('btn-delete-cheackbox')) {
+          let input = this.querySelector('.checkbox-wrapper__input');
+          input.checked = false;
+          input.parentNode.parentNode.classList.remove('active');
         }
+        categoriesForm.append(checkboxWrapper);
+        this.remove();
+        this.removeEventListener('click', removeCheckbox);
+        break;
       }
     }
   };
@@ -7194,9 +7291,12 @@
   activateTab();
   showPainters();
   addActiveClassBtn();
+  initialCategoriesAccordion();
   creatingColumnsCategory();
   hideSelectedItem();
-  optimizationСontactSection();
+  optimizelistCard ();
+  optimizeSwiperEdition ();
+  optimizationMap ();
 
   for (let i = 0; dropdownLink.length > i; i++) {
     dropdownLink[i].addEventListener('keydown', function (ev) {
@@ -7240,14 +7340,6 @@
         }
       }
     });
-  }
-
-  function optimizationСontactSection() {
-    if (document.documentElement.clientWidth <= 1643) {
-      wrapperFormContacts.classList.remove('form-container_margin-left');
-    } else if (!wrapperFormContacts.classList.contains('form-container_margin-left')) {
-      wrapperFormContacts.classList.add('form-container_margin-left');
-    }
   }
 
   document.querySelector('.contacts-form').addEventListener('submit', (ev)=> {

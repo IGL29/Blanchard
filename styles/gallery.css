@@ -145,7 +145,7 @@
   right: 0;
   bottom: 0;
   left: 0;
-  z-index: 25;
+  z-index: 30;
   width: 55%;
   height: 50%;
   margin: auto;
@@ -167,6 +167,10 @@
 .modal-window-active {
   overflow: hidden;
 }
+
+/* .modal-window-active-mobile {
+  position: fixed;
+} */
 
 .modal-window__block-image {
   width: 45%;
@@ -306,6 +310,7 @@
   height: 100%;
   z-index: 20;
   background-color: rgba(0, 0, 0, 0.6);
+  overflow: hidden;
 }
 
 .body_position-relative {

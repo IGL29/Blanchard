@@ -22,6 +22,14 @@
   transition: background-image 0.3s;
 }
 
+.project-text__span-tooltip-tablet:focus {
+  outline: none;
+}
+
+.project-text__span-tooltip-tablet:focus::after {
+  background-image: url('../img/tooltip-icon-active.svg');
+}
+
 .project-text__span-tooltip:hover::after {
   background-image: url('../img/tooltip-icon-hover.svg');
 }

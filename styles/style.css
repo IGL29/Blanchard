@@ -66,13 +66,11 @@ li {
   list-style-type: none;
 }
 
-.h2,
-.h3,
-.p {
+.margin-reset {
   margin: 0;
 }
 
-.ul {
+.margin-padding-reset {
   margin: 0;
   padding: 0;
 }
