@@ -136,7 +136,7 @@
   transform: rotateZ(180deg);
 }
 
-.swiper-wrapper-gallery__modal-window {
+.modal-window {
   position: absolute;
   display: -webkit-box;
   display: -ms-flexbox;
@@ -167,10 +167,6 @@
 .modal-window-active {
   overflow: hidden;
 }
-
-/* .modal-window-active-mobile {
-  position: fixed;
-} */
 
 .modal-window__block-image {
   width: 45%;

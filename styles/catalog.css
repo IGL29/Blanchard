@@ -495,15 +495,6 @@
   opacity: 1;
 }
 
-.selection-list__button:hover {
-  color: #9d5cd0;
-}
-
-.selection-list__button-active {
-  font-weight: 600;
-  color: #9d5cd0;
-}
-
 .selection-list__button::after {
   content: '';
   position: absolute;
@@ -518,8 +509,17 @@
   transition: opacity 0.3s;
 }
 
+.selection-list__button:hover {
+  color: #9d5cd0;
+}
+
 .selection-list__button:hover::after {
   opacity: 1;
+}
+
+.selection-list__button-active {
+  font-weight: 600;
+  color: #9d5cd0;
 }
 
 .selection-list__button:active {

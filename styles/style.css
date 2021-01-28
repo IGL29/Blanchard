@@ -1,40 +1,36 @@
 @font-face {
   font-family: 'Open-Sans';
-  src: url('../fonts/OpenSans-Light.woff2') format('woff2'),
-    url('../fonts/OpenSans-Light.woff') format('woff');
+  src: url('../fonts/OpenSans-Light.woff2') format('woff2'), url('../fonts/OpenSans-Light.woff') format('woff');
   font-weight: 300;
 }
 
 @font-face {
   font-family: 'Open-Sans';
-  src: url('../fonts/OpenSans-Regular.woff2') format('woff2'),
-    url('../fonts/OpenSans-Regular.woff') format('woff');
+  src: url('../fonts/OpenSans-Regular.woff2') format('woff2'), url('../fonts/OpenSans-Regular.woff') format('woff');
   font-weight: 400;
 }
 
 @font-face {
   font-family: 'Open-Sans';
-  src: url('../fonts/OpenSans-SemiBold.woff2') format('woff2'),
-    url('../fonts/OpenSans-SemiBold.woff') format('woff');
+  src: url('../fonts/OpenSans-SemiBold.woff2') format('woff2'), url('../fonts/OpenSans-SemiBold.woff') format('woff');
   font-weight: 600;
 }
 
 @font-face {
   font-family: 'Open-Sans';
-  src: url('../fonts/OpenSans-Bold.woff2') format('woff2'),
-    url('../fonts/OpenSans-Bold.woff') format('woff');
+  src: url('../fonts/OpenSans-Bold.woff2') format('woff2'), url('../fonts/OpenSans-Bold.woff') format('woff');
   font-weight: 700;
 }
 
 @font-face {
   font-family: 'Open-Sans';
-  src: url('../fonts/OpenSans-ExtraBold.woff2') format('woff2'),
-    url('../fonts/OpenSans-ExtraBold.woff') format('woff');
+  src: url('../fonts/OpenSans-ExtraBold.woff2') format('woff2'), url('../fonts/OpenSans-ExtraBold.woff') format('woff');
   font-weight: 800;
 }
 
 html {
   box-sizing: border-box;
+  min-height: 100%;
 }
 
 *,
@@ -44,8 +40,9 @@ html {
 }
 
 body {
+  min-height: 100%;
   margin: 0;
-  background-color: #FFF;
+  background-color: #fff;
   font-family: 'Open-Sans', sans-serif;
   font-size: 16px;
   line-height: 2;
@@ -89,7 +86,7 @@ fieldset {
 }
 
 *:focus {
-  outline: 2px solid #7943A4;
+  outline: 2px solid #7943a4;
 }
 
 .visually-hidden {
@@ -115,6 +112,7 @@ input[type="number"]::-webkit-inner-spin-button {
 input[type="number"] {
   -moz-appearance: textfield;
 }
+
 input[type="number"]:hover,
 input[type="number"]:focus {
   -moz-appearance: number-input;
@@ -132,5 +130,3 @@ input[type=number]::-webkit-outer-spin-button {
   margin: 0 auto;
   padding: 0 20px;
 }
-
-
