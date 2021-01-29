@@ -30,6 +30,7 @@
   const nav = document.querySelector('.nav');
   const navList = document.querySelector('.nav__list');
   const categoriesWrapper = document.querySelector('.categories-wrapper');
+  const script = document.createElement('script');
   let scrollY = null;
   let swiperGallery = document.querySelector('.container-gallery');
   let selectedCategoryTab = 3;
@@ -37,25 +38,25 @@
   let imagePath = null;
   let imageDescription = null;
   let timerId = null;
-
+  
   let mySwiper = new Swiper('.swiper-container', {
-
+    
     direction: 'horizontal',
     loop: true,
     grabCursor: true,
-
+    
     scrollbar: {
       el: '.swiper-scrollbar',
     },
   });
-
+  
   clearInterval(timerId);
   timerId = setInterval(nextSlide, 6000);
-
+  
   function nextSlide() {
     mySwiper.slideNext(1500, true);
   }
-
+  
   window.addEventListener('resize', function () {
     showNavigation();
     optimizeSizeSwiper();
@@ -64,88 +65,88 @@
     optimizelistCard();
     optimizeSwiperEdition();
   })
-
+  
   function optimizeSizeSwiper() {
     initializationSwiperGallery();
     initializationSwiperPartners();
   }
-
+  
   function initializationSwiperGallery() {
     let mySwiperGallery = new Swiper('.gallery-section__swiper-container', {
-
+      
       direction: 'horizontal',
       allowTouchMove: false,
-
+      
       pagination: {
         el: '.swiper-pagination-gallery',
         type: 'fraction',
       },
-
+      
       navigation: {
         nextEl: '.swiper-button-next-gallery',
         prevEl: '.swiper-button-prev-gallery',
       },
-
+      
       a11y: {
         prevSlideMessage: 'Предыдущий слайд',
         nextSlideMessage: 'Следующий слайд',
       },
 
       breakpoints: {
-
+        
         1200: {
           slidesPerView: 3,
-
+          
           slidesPerGroup: 3,
-
+          
           spaceBetween: 48,
-
+          
           slidesPerColumn: 2,
-
+          
           autoHeight: false,
-
+          
           centeredSlides: false,
-
+          
           allowTouchMove: false,
-
+          
           initialSlide: 0,
         },
-
+        
         577: {
           slidesPerView: 2,
-
+          
           slidesPerGroup: 2,
-
+          
           spaceBetween: 34,
-
+          
           slidesPerColumn: 2,
-
+          
           autoHeight: false,
-
+          
           centeredSlides: false,
-
+          
           allowTouchMove: false,
-
+          
           initialSlide: 0,
         },
-
+        
         320: {
           slidesPerView: 1,
-
+          
           slidesPerGroup: 1,
-
+          
           slidesPerColumn: 1,
-
+          
           slidesPerColumn: 1,
-
+          
           spaceBetween: 20,
-
+          
           allowTouchMove: true,
         },
       }
     });
   }
-
+  
   function optimizeSwiperEdition() {
     if (document.documentElement.clientWidth > 576) {
       document.querySelector('.container-editions').classList.add('swiper-container-editions');
@@ -155,14 +156,14 @@
       removeSwiperEdition();
     }
   }
-
+  
   function initSwiperEdition() {
     let mySwiperEdition = new Swiper('.swiper-container-editions', {
-
+      
       direction: 'horizontal',
       loop: true,
       allowTouchMove: false,
-
+      
       pagination: {
         el: '.swiper-pagination-editions',
         type: 'fraction',
@@ -7342,6 +7343,15 @@
   optimizelistCard();
   optimizeSwiperEdition();
   optimizationMap();
+
+  script.src = "scripts/focus-visible.js";
+
+  script.addEventListener('error', () => {
+    let focusElements = document.querySelectorAll('.js-focus-visible');
+    focusElements.forEach(element, () => {
+      focusElements.classList.remove('js-focus-visible');
+    })
+  });
 
   for (let i = 0; dropdownLink.length > i; i++) {
     dropdownLink[i].addEventListener('keydown', function (ev) {
