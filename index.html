@@ -9,6 +9,7 @@
   <script src="https://unpkg.com/tippy.js@6" defer></script>
   <script src="https://api-maps.yandex.ru/2.1/?apikey=вашAPI-ключ&lang=ru_RU" defer></script>
   <script src="https://unpkg.com/swiper/swiper-bundle.min.js" defer></script>
+  <script src="scripts/focus-visible.js" defer></script> 
   <script src="scripts/choices.min.js" defer></script>
   <script src="scripts/simplebar.js" defer></script>
   <script src="scripts/jquery.js" defer></script>
@@ -21,9 +22,9 @@
   <header class="header">
     <div class="header__row-1">
       <div class="container flex">
-        <button class="btn-burger-menu btn-burger-menu__background" aria-label="Раскрыть меню"
+        <button class="btn-burger-menu btn-burger-menu__background js-focus-visible" aria-label="Раскрыть меню"
           aria-pressed="false"></button>
-        <a class="logo-link logo-link_margin-right header__logo-link" href="#" aria-label="На главную страницу"
+        <a class="logo-link logo-link_margin-right header__logo-link js-focus-visible" href="#" aria-label="На главную страницу"
           aria-current="page">
           <picture>
             <source srcset="img/logo-mobile.svg" media="(max-width: 576px)">
@@ -36,36 +37,36 @@
         <nav id="nav" class="nav nav_color_white nav_width nav_margin nav_display-none">
           <ul class="nav__list flex margin-padding-reset">
             <li class="nav__item nav-item_font-weight">
-              <a class="nav__link" href="#about-section">О нас</a>
+              <a class="nav__link js-focus-visible" href="#about-section">О нас</a>
             </li>
 
             <li class="nav__item nav-item_font-weight">
-              <a class="nav__link" href="#gallery">Галерея</a>
+              <a class="nav__link js-focus-visible" href="#gallery">Галерея</a>
             </li>
 
             <li class="nav__item nav-item_font-weight">
-              <a class="nav__link" href="#catalog">Каталог</a>
+              <a class="nav__link js-focus-visible" href="#catalog">Каталог</a>
             </li>
 
             <li class="nav__item nav-item_font-weight">
-              <a class="nav__link" href="#events">События</a>
+              <a class="nav__link js-focus-visible" href="#events">События</a>
             </li>
 
             <li class="nav__item nav-item_font-weight">
-              <a class="nav__link" href="#editions">Издания</a>
+              <a class="nav__link js-focus-visible" href="#editions">Издания</a>
             </li>
 
             <li class="nav__item nav-item_font-weight">
-              <a class="nav__link" href="#projects">Проекты</a>
+              <a class="nav__link js-focus-visible" href="#projects">Проекты</a>
             </li>
 
             <li class="nav__item nav-item_font-weight">
-              <a class="nav__link" href="#contacts">Контакты</a>
+              <a class="nav__link js-focus-visible" href="#contacts">Контакты</a>
             </li>
           </ul>
         </nav>
 
-        <a class="link-personal-account" href="#">
+        <a class="link-personal-account js-focus-visible" href="#">
           <svg width="13" height="13" viewBox="0 0 13 13" fill="none" xmlns="http://www.w3.org/2000/svg">
             <path
               d="M5.12056 9.09278L6.13889 10.1111L9.75 6.5L6.13889 2.88889L5.12056 3.90722L6.98389 5.77778H0V7.22222H6.98389L5.12056 9.09278ZM11.5556 0H1.44444C0.642778 0 0 0.65 0 1.44444V4.33333H1.44444V1.44444H11.5556V11.5556H1.44444V8.66667H0V11.5556C0 12.35 0.642778 13 1.44444 13H11.5556C12.35 13 13 12.35 13 11.5556V1.44444C13 0.65 12.35 0 11.5556 0Z"
@@ -76,9 +77,9 @@
 
         <div class="wrapper-form wrapper-form_order">
           <form class="wrapper-form__form" method="get">
-            <input class="wrapper-form__input" type="search" tabindex="-1">
-            <button class="wrapper-form__btn-search" aria-label="Найти" tabindex="0"></button>
-            <button class="wrapper-form__btn-close" aria-label="Закрыть форму" tabindex="-1"></button>
+            <input class="wrapper-form__input js-focus-visible" type="search" tabindex="-1">
+            <button class="wrapper-form__btn-search js-focus-visible" aria-label="Найти" tabindex="0"></button>
+            <button class="wrapper-form__btn-close js-focus-visible" aria-label="Закрыть форму" tabindex="-1"></button>
           </form>
         </div>
       </div>
@@ -88,29 +89,29 @@
       <div class="container flex">
         <ul class="dropdown margin-padding-reset">
           <li class="dropdown__item">
-            <button class="dropdown__button" aria-expanded="false" aria-controls="id_realism_menu">Реализм</button>
+            <button class="dropdown__button js-focus-visible" aria-expanded="false" aria-controls="id_realism_menu">Реализм</button>
 
             <div class="dropdown__wrap">
               <div class="dropdown__container">
                 <ul class="dropdown__content-list margin-padding-reset" id="id_realism_menu">
                   <li class="dropdown-list__item dropdown-list__item_margin dropdown-list__item_background-1">
-                    <a class="dropdown-list__link" href="#">Тинторетто</a>
+                    <a class="dropdown-list__link js-focus-visible" href="#">Тинторетто</a>
                   </li>
 
                   <li class="dropdown-list__item dropdown-list__item_margin dropdown-list__item_background-2">
-                    <a class="dropdown-list__link" href="#">Фридрих</a>
+                    <a class="dropdown-list__link js-focus-visible" href="#">Фридрих</a>
                   </li>
 
                   <li class="dropdown-list__item dropdown-list__item_margin dropdown-list__item_background-3">
-                    <a class="dropdown-list__link" href="#">Леонардо</a>
+                    <a class="dropdown-list__link js-focus-visible" href="#">Леонардо</a>
                   </li>
 
                   <li class="dropdown-list__item dropdown-list__item_margin dropdown-list__item_background-4">
-                    <a class="dropdown-list__link" href="#">Верроккьо</a>
+                    <a class="dropdown-list__link js-focus-visible" href="#">Верроккьо</a>
                   </li>
 
                   <li class="dropdown-list__item dropdown-list__item_margin dropdown-list__item_background-2">
-                    <a class="dropdown-list__link" href="#">Фридрих</a>
+                    <a class="dropdown-list__link js-focus-visible" href="#">Фридрих</a>
                   </li>
                 </ul>
               </div>
@@ -118,30 +119,30 @@
           </li>
 
           <li class="dropdown__item">
-            <button class="dropdown__button" aria-expanded="false"
+            <button class="dropdown__button js-focus-visible" aria-expanded="false"
               aria-controls="id_impressionism_menu">Импрессионизм</button>
 
             <div class="dropdown__wrap">
               <div class="dropdown__container">
                 <ul class="dropdown__content-list margin-padding-reset" id="id_impressionism_menu">
                   <li class="dropdown-list__item dropdown-list__item_margin dropdown-list__item_background-5">
-                    <a class="dropdown-list__link" href="#">Моне</a>
+                    <a class="dropdown-list__link js-focus-visible" href="#">Моне</a>
                   </li>
 
                   <li class="dropdown-list__item dropdown-list__item_margin dropdown-list__item_background-6">
-                    <a class="dropdown-list__link" href="#">Сислей</a>
+                    <a class="dropdown-list__link js-focus-visible" href="#">Сислей</a>
                   </li>
 
                   <li class="dropdown-list__item dropdown-list__item_margin dropdown-list__item_background-7">
-                    <a class="dropdown-list__link" href="#">Мане</a>
+                    <a class="dropdown-list__link js-focus-visible" href="#">Мане</a>
                   </li>
 
                   <li class="dropdown-list__item dropdown-list__item_margin dropdown-list__item_background-8">
-                    <a class="dropdown-list__link" href="#">Ренуар</a>
+                    <a class="dropdown-list__link js-focus-visible" href="#">Ренуар</a>
                   </li>
 
                   <li class="dropdown-list__item dropdown-list__item_margin dropdown-list__item_background-6">
-                    <a class="dropdown-list__link" href="#">Сислей</a>
+                    <a class="dropdown-list__link js-focus-visible" href="#">Сислей</a>
                   </li>
                 </ul>
               </div>
@@ -149,18 +150,18 @@
           </li>
 
           <li class="dropdown__item">
-            <button class="dropdown__button" aria-expanded="false"
+            <button class="dropdown__button js-focus-visible" aria-expanded="false"
               aria-controls="id_post_impressionism_menu">Постимпрессионизм</button>
 
             <div class="dropdown__wrap">
               <div class="dropdown__container">
                 <ul class="dropdown__content-list margin-padding-reset" id="id_post_impressionism_menu">
                   <li class="dropdown-list__item dropdown-list__item_margin dropdown-list__item_background-9">
-                    <a class="dropdown-list__link" href="#">Ван Гог</a>
+                    <a class="dropdown-list__link js-focus-visible" href="#">Ван Гог</a>
                   </li>
 
                   <li class="dropdown-list__item dropdown-list__item_margin dropdown-list__item_background-10">
-                    <a class="dropdown-list__link" href="#">Сезанн</a>
+                    <a class="dropdown-list__link js-focus-visible" href="#">Сезанн</a>
                   </li>
                 </ul>
               </div>
@@ -168,29 +169,29 @@
           </li>
 
           <li class="dropdown__item">
-            <button class="dropdown__button" aria-expanded="false" aria-controls="id_vanguard_menu">Авангард</button>
+            <button class="dropdown__button js-focus-visible" aria-expanded="false" aria-controls="id_vanguard_menu">Авангард</button>
 
             <div class="dropdown__wrap">
               <div class="dropdown__container">
                 <ul class="dropdown__content-list margin-padding-reset" id="id_vanguard_menu">
                   <li class="dropdown-list__item dropdown-list__item_margin dropdown-list__item_background-13">
-                    <a class="dropdown-list__link" href="#">Кандинский</a>
+                    <a class="dropdown-list__link js-focus-visible" href="#">Кандинский</a>
                   </li>
 
                   <li class="dropdown-list__item dropdown-list__item_margin dropdown-list__item_background-14">
-                    <a class="dropdown-list__link" href="#">Маринетти</a>
+                    <a class="dropdown-list__link js-focus-visible" href="#">Маринетти</a>
                   </li>
 
                   <li class="dropdown-list__item dropdown-list__item_margin dropdown-list__item_background-15">
-                    <a class="dropdown-list__link" href="#">Малевич</a>
+                    <a class="dropdown-list__link js-focus-visible" href="#">Малевич</a>
                   </li>
 
                   <li class="dropdown-list__item dropdown-list__item_margin dropdown-list__item_background-16">
-                    <a class="dropdown-list__link" href="#">Пикассо</a>
+                    <a class="dropdown-list__link js-focus-visible" href="#">Пикассо</a>
                   </li>
 
                   <li class="dropdown-list__item dropdown-list__item_margin dropdown-list__item_background-14">
-                    <a class="dropdown-list__link" href="#">Маринетти</a>
+                    <a class="dropdown-list__link js-focus-visible" href="#">Маринетти</a>
                   </li>
                 </ul>
               </div>
@@ -198,29 +199,29 @@
           </li>
 
           <li class="dropdown__item">
-            <button class="dropdown__button" aria-expanded="false" aria-controls="id_futurism_menu">Футуризм</button>
+            <button class="dropdown__button js-focus-visible" aria-expanded="false" aria-controls="id_futurism_menu">Футуризм</button>
 
             <div class="dropdown__wrap">
               <div class="dropdown__container">
                 <ul class="dropdown__content-list margin-padding-reset" id="id_futurism_menu">
                   <li class="dropdown-list__item dropdown-list__item_margin dropdown-list__item_background-17">
-                    <a class="dropdown-list__link" href="#">Карра</a>
+                    <a class="dropdown-list__link js-focus-visible" href="#">Карра</a>
                   </li>
 
                   <li class="dropdown-list__item dropdown-list__item_margin dropdown-list__item_background-18">
-                    <a class="dropdown-list__link" href="#">Прателла</a>
+                    <a class="dropdown-list__link js-focus-visible" href="#">Прателла</a>
                   </li>
 
                   <li class="dropdown-list__item dropdown-list__item_margin dropdown-list__item_background-19">
-                    <a class="dropdown-list__link" href="#">Северини</a>
+                    <a class="dropdown-list__link js-focus-visible" href="#">Северини</a>
                   </li>
 
                   <li class="dropdown-list__item dropdown-list__item_margin dropdown-list__item_background-20">
-                    <a class="dropdown-list__link" href="#">Балла</a>
+                    <a class="dropdown-list__link js-focus-visible" href="#">Балла</a>
                   </li>
 
                   <li class="dropdown-list__item dropdown-list__item_margin dropdown-list__item_background-18">
-                    <a class="dropdown-list__link" href="#">Прателла</a>
+                    <a class="dropdown-list__link js-focus-visible" href="#">Прателла</a>
                   </li>
                 </ul>
               </div>
@@ -229,9 +230,9 @@
         </ul>
 
         <form class="form-search" action="#" method="get">
-          <input class="form-search__input" type="search" placeholder="Поиск по сайту">
+          <input class="form-search__input js-focus-visible" type="search" placeholder="Поиск по сайту">
 
-          <button class="form-search__button" type="submit" aria-label="Поиск">
+          <button class="form-search__button js-focus-visible js-focus-visible" type="submit" aria-label="Поиск">
             <svg class="form-search__icon" width="23" height="22" viewBox="0 0 23 22" fill="none"
               xmlns="http://www.w3.org/2000/svg">
               <rect width="6.8678" height="1.71695"
@@ -251,7 +252,7 @@
       <h1 class="visually-hidden">Художественная галерея Blanchard</h1>
 
       <div class="container wrap-burger-menu">
-        <a class="button burger-menu-button" href="#">Войти</a>
+        <a class="button burger-menu-button js-focus-visible" href="#">Войти</a>
       </div>
 
       <div class="container_position">
@@ -307,10 +308,10 @@
               <fieldset class="form-gallery__fieldset fieldset">
                 <legend class="form-gallery__legend text_color_white legend">Фильтровать по:</legend>
 
-                <select class="form-gallery__select js-choice" name="filter">
-                  <option class="form-gallery__input" value="">Автор</option>
-                  <option class="form-gallery__input" value="">Направление</option>
-                  <option class="form-gallery__input" value="">Техника</option>
+                <select class="form-gallery__select js-choice js-focus-visible" name="filter">
+                  <option class="form-gallery__input js-focus-visible" value="">Автор</option>
+                  <option class="form-gallery__input js-focus-visible" value="">Направление</option>
+                  <option class="form-gallery__input js-focus-visible" value="">Техника</option>
                 </select>
               </fieldset>
             </form>
@@ -319,13 +320,13 @@
           <p class="margin-reset text_color_white text_weight_600 text-gallery">Вам предоставляется 10 бесплатных
             скачиваний. Для
             увеличения количества скачиваний
-            <a class="link-authorization" href="#">авторизуйтесь,</a>
+            <a class="link-authorization js-focus-visible" href="#">авторизуйтесь,</a>
             либо воспользуйтесь лицензией.
           </p>
 
           <div class="gallery-section__block-images">
             <div class="swiper-navigation-container gallery-section__swiper-navigation-container">
-              <div tabindex="0" class="swiper-button-prev-gallery swiper-btn-prev">
+              <div tabindex="0" class="swiper-button-prev-gallery swiper-btn-prev js-focus-visible">
                 <svg class="swiper-btn-prev__icon" width="30" height="30" viewBox="0 0 30 30" fill="none"
                   xmlns="http://www.w3.org/2000/svg">
                   <path class="swiper-btn-prev__icon__background"
@@ -340,7 +341,7 @@
 
               <div class="swiper-pagination-gallery pagination"></div>
 
-              <div tabindex="0" class="swiper-button-next-gallery swiper-btn-next">
+              <div tabindex="0" class="swiper-button-next-gallery swiper-btn-next js-focus-visible">
                 <svg class="swiper-btn-next__icon" width="30" height="30" viewBox="0 0 30 30" fill="none"
                   xmlns="http://www.w3.org/2000/svg">
                   <path class="swiper-btn-next__icon__background"
@@ -728,27 +729,27 @@
           <h2 class="margin-reset tabs-container__title title title_margin">Каталог</h2>
           <ul class="tabs-container__tab-list tabs-list margin-padding-reset" role="tablist">
             <li class="tabs-list_item tabs-list_item-1">
-              <button class="tabs-list__button tabs-list__button-1" data-tab-id="1" role="tab" aria-selected="false"
+              <button class="tabs-list__button tabs-list__button-1 js-focus-visible" data-tab-id="1" role="tab" aria-selected="false"
                 aria-controls="paragraph accordion" aria-label="Французские художники"></button>
             </li>
 
             <li class="tabs-list_item tabs-list_item-2">
-              <button class="tabs-list__button tabs-list__button-2" data-tab-id="2" role="tab" aria-selected="false"
+              <button class="tabs-list__button tabs-list__button-2 js-focus-visible" data-tab-id="2" role="tab" aria-selected="false"
                 aria-controls="paragraph accordion" aria-label="Немецкие художники"></button>
             </li>
 
             <li class="tabs-list_item tabs-list_item-3">
-              <button class="tabs-list__button tabs-list__button-3" data-tab-id="3" role="tab" aria-selected="true"
+              <button class="tabs-list__button tabs-list__button-3 js-focus-visible" data-tab-id="3" role="tab" aria-selected="true"
                 aria-controls="paragraph accordion" aria-label="Итальянские художники"></button>
             </li>
 
             <li class="tabs-list_item tabs-list_item-4">
-              <button class="tabs-list__button tabs-list__button-4" data-tab-id="4" role="tab" aria-selected="false"
+              <button class="tabs-list__button tabs-list__button-4 js-focus-visible" data-tab-id="4" role="tab" aria-selected="false"
                 aria-controls="paragraph accordion" aria-label="Российские художники"></button>
             </li>
 
             <li class="tabs-list_item tabs-list_item-5">
-              <button class="tabs-list__button tabs-list__button-5" data-tab-id="5" role="tab" aria-selected="false"
+              <button class="tabs-list__button tabs-list__button-5 js-focus-visible" data-tab-id="5" role="tab" aria-selected="false"
                 aria-controls="paragraph accordion" aria-label="Бельгийские художники"></button>
             </li>
           </ul>
@@ -784,7 +785,7 @@
 
           <ul id="accordion" class="section-catalog__dropdown-list dropdown-list-catalog margin-padding-reset">
             <li class="dropdown-list-catalog__item accordion-item">
-              <div class="accordion-header dropdown-list-catalog__accordion-header" tabindex="0">
+              <div class="accordion-header dropdown-list-catalog__accordion-header">
                 <p class="margin-reset accordion-header__text">С 1400 по 1499 гг.</p>
               </div>
 
@@ -794,7 +795,7 @@
             </li>
 
             <li class="dropdown-list-catalog__item  accordion-item">
-              <div class="accordion-header dropdown-list-catalog__accordion-header" tabindex="0">
+              <div class="accordion-header dropdown-list-catalog__accordion-header ">
                 <p class="margin-reset accordion-header__text">С 1500 по 1599 гг.</p>
               </div>
 
@@ -880,7 +881,7 @@
                 художественной династии, которую
                 продолжили его брат Давид и сын Ридольфо. Глава художественной мастерской, где юный Микеланджело.</p>
               <div class="list-cards__wrapper-link">
-                <a class="list-cards__link" href="#">Подробнее</a>
+                <a class="list-cards__link js-focus-visible" href="#">Подробнее</a>
               </div>
             </div>
           </li>
@@ -904,7 +905,7 @@
                 эксперимент
                 проверки новых принципов формирования...</p>
               <div class="list-cards__wrapper-link">
-                <a class="list-cards__link" href="#">Подробнее</a>
+                <a class="list-cards__link js-focus-visible" href="#">Подробнее</a>
               </div>
             </div>
           </li>
@@ -929,7 +930,7 @@
                 значение для новых принципов формирования материально-технической и кадровой базы.
               </p>
               <div class="list-cards__wrapper-link">
-                <a class="list-cards__link" href="#">Подробнее</a>
+                <a class="list-cards__link js-focus-visible" href="#">Подробнее</a>
               </div>
             </div>
           </li>
@@ -956,7 +957,7 @@
                 разрезе
                 маркетинговых и финансовых...</p>
               <div class="list-cards__wrapper-link">
-                <a class="list-cards__link" href="#">Подробнее</a>
+                <a class="list-cards__link js-focus-visible" href="#">Подробнее</a>
               </div>
             </div>
           </li>
@@ -980,13 +981,13 @@
                 продолжили его брат Давид и сын Ридольфо. Глава художественной мастерской, где юный Микеланджело.
               </p>
               <div class="list-cards__wrapper-link">
-                <a class="list-cards__link" href="#">Подробнее</a>
+                <a class="list-cards__link js-focus-visible" href="#">Подробнее</a>
               </div>
             </div>
           </li>
         </ul>
 
-        <button class="button button-show button_margin-top">Все события</button>
+        <button class="button button-show button_margin-top js-focus-visible">Все события</button>
       </div>
     </section>
 
@@ -997,11 +998,11 @@
             <h2 class="margin-reset title title-edition-tablet">Издания</h2>
 
             <div class="categories-wrapper">
-              <h3 class="margin-reset subtitle subtitle-edition-card subtitle-edition-categories">Категории</h3>
+              <h3 class="margin-reset subtitle subtitle-edition-card subtitle-edition-categories js-focus-visible">Категории</h3>
 
               <form class="categories-form" action="get">
                 <div class="categories-form__checkbox-wrapper checkbox-wrapper">
-                  <input id="input-1" class="checkbox-wrapper__input" type="checkbox" name="categories"
+                  <input id="input-1" class="checkbox-wrapper__input js-focus-visible" type="checkbox" name="categories"
                     value="bestsellers">
 
                   <label for="input-1" class="checkbox-wrapper__label">Бестселлеры</label>
@@ -1114,12 +1115,12 @@
               <div class="input-price-container">
                 <label class="price-label price-label-initial" id="initial-price-label" for="initial-price"
                   aria-label="Минимальная стоимость">От</label>
-                <input class="price-input" id="initial-price" aria-labelledby="title-input initial-price-label"
+                <input class="price-input js-focus-visible" id="initial-price" aria-labelledby="title-input initial-price-label"
                   type="number" min="0">
 
                 <label class="price-label price-label-final" id="final-price-label" for="final-price"
                   aria-label="Максимальная стоимость">до</label>
-                <input class="price-input" id="final-price" aria-labelledby="title-input final-price-label"
+                <input class="price-input js-focus-visible" id="final-price" aria-labelledby="title-input final-price-label"
                   type="number" min="0">
                 <span class="price-span">руб.</span>
               </div>
@@ -1174,7 +1175,7 @@
                     <span class="edition-card__span">620 руб</span>
                   </div>
 
-                  <button class="button button_color edition-card__button button_margin-0" aria-describedby="book1"
+                  <button class="button button_color edition-card__button button_margin-0 js-focus-visible" aria-describedby="book1"
                     tabindex="0">Заказать</button>
                 </div>
 
@@ -1189,7 +1190,7 @@
                     <span class="edition-card__span">2 450 руб</span>
                   </div>
 
-                  <button class="button button_color edition-card__button button_margin-0"
+                  <button class="button button_color edition-card__button button_margin-0 js-focus-visible"
                     aria-describedby="book2">Заказать</button>
                 </div>
 
@@ -1204,7 +1205,7 @@
                     <span class="edition-card__span">2 200 руб</span>
                   </div>
 
-                  <button class="button button_color edition-card__button button_margin-0"
+                  <button class="button button_color edition-card__button button_margin-0 js-focus-visible"
                     aria-describedby="book3">Заказать</button>
                 </div>
 
@@ -1234,7 +1235,7 @@
                     <span class="edition-card__span">1 450 руб</span>
                   </div>
 
-                  <button class="button button_color edition-card__button button_margin-0"
+                  <button class="button button_color edition-card__button button_margin-0 js-focus-visible"
                     aria-describedby="book5">Заказать</button>
                 </div>
 
@@ -1250,7 +1251,7 @@
                     <span class="edition-card__span">3 200 руб</span>
                   </div>
 
-                  <button class="button button_color edition-card__button button_margin-0"
+                  <button class="button button_color edition-card__button button_margin-0 js-focus-visible"
                     aria-describedby="book6">Заказать</button>
                 </div>
 
@@ -1268,7 +1269,7 @@
                     <span class="edition-card__span">2 200 руб</span>
                   </div>
 
-                  <button class="button button_color edition-card__button button_margin-0"
+                  <button class="button button_color edition-card__button button_margin-0 js-focus-visible"
                     aria-describedby="book7">Заказать</button>
                 </div>
               </div>
@@ -1288,29 +1289,29 @@
           государства смешаны с не
           уникальными данными до степени совершенной неузнаваемости, из-за чего возрастает их статус бесполезности.
           Прежде всего, постоянное информационно-пропагандистское <span
-            class="project-text__span-tooltip span-tooltip-1" role="tooltip" tabindex="0"></span>
+            class="project-text__span-tooltip span-tooltip-1 js-focus-visible" role="tooltip" tabindex="0"></span>
           обеспечение нашей деятельности однозначно фиксирует необходимость экономической целесообразности принимаемых
           решений. И нет сомнений, что
           действия представителей оппозиции могут быть рассмотрены <span
-            class="project-text__span-tooltip span-tooltip-2" role="tooltip" tabindex="0"></span>
-          исключительно в разрезе маркетинговых и финансовых <span class="project-text__span-tooltip span-tooltip-3"
+            class="project-text__span-tooltip span-tooltip-2 js-focus-visible" role="tooltip" tabindex="0"></span>
+          исключительно в разрезе маркетинговых и финансовых <span class="project-text__span-tooltip span-tooltip-3 js-focus-visible"
             role="tooltip" tabindex="0"></span>
           предпосылок. Банальные, но неопровержимые выводы,
           а также представители современных социальных резервов призывают нас к новым свершениям, которые, в свою
           очередь, должны быть смешаны с не
-          уникальными <span class="project-text__span-tooltip span-tooltip-4" role="tooltip" tabindex="0"></span>
+          уникальными <span class="project-text__span-tooltip span-tooltip-4 js-focus-visible" role="tooltip" tabindex="0"></span>
           данными до степени
           совершенной
           неузнаваемости.
           Подробнее:
-          <a class="project-text__link" href="#">blanchard-art.ru/projects/about</a>
+          <a class="project-text__link js-focus-visible" href="#">blanchard-art.ru/projects/about</a>
         </p>
 
         <h3 class="margin-reset subtitle subtitle-partners">Партнеры проектов:</h3>
 
         <div class="partners-wrapper">
           <div
-            class="swiper-button-prev-partners swiper-btn-prev swiper-btn-prev-partners_background swiper-btn-prev-edition">
+            class="swiper-button-prev-partners swiper-btn-prev swiper-btn-prev-partners_background swiper-btn-prev-edition js-focus-visible">
             <svg class="swiper-btn-prev__icon" width="30" height="30" viewBox="0 0 30 30" fill="none"
               xmlns="http://www.w3.org/2000/svg">
               <path class="swiper-btn-prev__icon__background"
@@ -1323,7 +1324,7 @@
             </svg>
           </div>
           <div
-            class="swiper-button-next-partners swiper-btn-next swiper-btn-next-partners_background swiper-btn-next-edition">
+            class="swiper-button-next-partners swiper-btn-next swiper-btn-next-partners_background swiper-btn-next-edition js-focus-visible">
             <svg class="swiper-btn-next__icon" width="30" height="30" viewBox="0 0 30 30" fill="none"
               xmlns="http://www.w3.org/2000/svg">
               <path class="swiper-btn-next__icon__background"
@@ -1418,13 +1419,13 @@
             <h3 class="margin-reset subtitle subtitle_font-size-18px subtitle_font-weight-400 subtitle_margin"
               id="title-callback">Заказать обратный звонок</h3>
 
-            <input class="contacts-form__input" type="text" name="firstName" aria-labelledby="title-callback"
+            <input class="contacts-form__input js-focus-visible" type="text" name="firstName" aria-labelledby="title-callback"
               placeholder="Имя*" required>
 
-            <input class="contacts-form__input" type="number" name="telephoneNumber" aria-labelledby="title-callback"
+            <input class="contacts-form__input js-focus-visible" type="number" name="telephoneNumber" aria-labelledby="title-callback"
               placeholder="Телефон*" required>
 
-            <button class="button button_margin-0 button-contacts" type="submit">Заказать</button>
+            <button class="button button_margin-0 button-contacts js-focus-visible" type="submit">Заказать</button>
           </form>
 
           <h3 class="margin-reset subtitle subtitle_margin-bottom subtitle-contacts">Связаться в один клик</h3>
@@ -1432,12 +1433,12 @@
           <address>
             <ul class="list-social margin-padding-reset">
               <li class="list-social__item">
-                <a class="list-social__link list-social__link_background-1" href="https://www.whatsapp.com/"
+                <a class="list-social__link list-social__link_background-1 js-focus-visible" href="https://www.whatsapp.com/"
                   target="blank" aria-label="Вотсап"></a>
               </li>
 
               <li class="list-social__item">
-                <a class="list-social__link list-social__link_background-2" href="https://t.me/vanya2994" target="blank"
+                <a class="list-social__link list-social__link_background-2 js-focus-visible" href="https://t.me/vanya2994" target="blank"
                   aria-label="Телеграм"></a>
               </li>
             </ul>
@@ -1450,7 +1451,7 @@
   
   <footer class="footer">
     <div class="container footer__container">
-      <a class="logo-link logo-link_margin-right logo-link-footer" href="#">
+      <a class="logo-link logo-link_margin-right logo-link-footer js-focus-visible" href="#">
         <picture>
           <source srcset="img/logo-mobile.svg" media="(max-width: 576px)">
 
@@ -1460,17 +1461,17 @@
 
       <ul class="footer__list margin-padding-reset">
         <li class="footer__item">
-          <a class="footer__link-social footer__link-social_background-1" href="https://vk.com/" target="blank"
+          <a class="footer__link-social footer__link-social_background-1 js-focus-visible" href="https://vk.com/" target="blank"
             aria-label="Вконтакте"></a>
         </li>
 
         <li class="footer__item">
-          <a class="footer__link-social footer__link-social_background-2" href="https://www.instagram.com/"
+          <a class="footer__link-social footer__link-social_background-2 js-focus-visible" href="https://www.instagram.com/"
             target="blank" aria-label="Инстаграм"></a>
         </li>
 
         <li class="footer__item">
-          <a class="footer__link-social footer__link-social_background-3" href="https://ru-ru.facebook.com/"
+          <a class="footer__link-social footer__link-social_background-3 js-focus-visible" href="https://ru-ru.facebook.com/"
             target="blank" aria-label="Фэйсбук"></a>
         </li>
       </ul>

@@ -1915,6 +1915,18 @@
     display: none;
   }
 
+  .project-text__span-tooltip:hover::after {
+    background-image: url('../img/tooltip-icon.svg');
+  }
+
+  .project-text__span-tooltip-active:hover.project-text__span-tooltip::after {
+    background-image: url('../img/tooltip-icon-active.svg');
+  }
+
+  .project-text__span-tooltip-active.project-text__span-tooltip::after {
+    background-image: url('../img/tooltip-icon-active.svg');
+  }
+
   .wrapper-partners-card__image {
     padding-bottom: 33%;
   }
@@ -2131,6 +2143,23 @@
 
   .logo-link-footer {
     margin-right: 0;
+  }
+
+  .footer__link-social::after {
+    top: 2px;
+    left: 1px;
+    width: 31px;
+    height: 31px;
+  }
+
+  .footer__item:nth-of-type(2) > .footer__link-social:after {
+    top: 2px;
+    left: 4px;
+  }
+
+  .footer__item:nth-of-type(3) > .footer__link-social:after {
+    top: 2px;
+    left: 7px;
   }
 }
  

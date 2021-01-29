@@ -6770,18 +6770,21 @@
       content: 'Пример современных тенденций - современная методология разработки',
       inertia: true,
       theme: 'gray',
+      trigger: 'mouseenter focus',
     });
 
     tippy('.span-tooltip-2', {
       content: 'Приятно, граждане, наблюдать, как сделанные на базе аналитики выводы вызывают у вас эмоции',
       inertia: true,
       theme: 'gray',
+      trigger: 'mouseenter focus',
     });
 
     tippy('.span-tooltip-3', {
       content: 'В стремлении повысить качество',
       inertia: true,
       theme: 'gray',
+      trigger: 'mouseenter focus',
     });
 
   } else if (document.documentElement.clientWidth > 576) {
@@ -6790,21 +6793,25 @@
       content: 'Пример современных тенденций - современная методология разработки',
       inertia: true,
       theme: 'gray-tablet',
+      trigger: 'mouseenter focus',
     });
 
     tippy('.span-tooltip-2', {
       content: 'В стремлении повысить качество',
       inertia: true,
       theme: 'gray-tablet',
+      trigger: 'mouseenter focus',
     });
 
     tippy('.span-tooltip-3', {
       content: 'Приятно, граждане, наблюдать, как сделанные на базе аналитики выводы вызывают у вас эмоции',
       inertia: true,
       theme: 'gray-tablet',
+      trigger: 'mouseenter focus',
     });
 
     for (let i = 0; tooltipArray.length > i; i++) {
+      tooltipArray[i].removeEventListener('click', addClassTooltip);
       tooltipArray[i].classList.add('project-text__span-tooltip-tablet');
     }
   } else {
@@ -6813,25 +6820,45 @@
       content: 'Пример современных тенденций - современная методология разработки',
       inertia: true,
       theme: 'gray-tablet',
+      trigger: 'click',
     });
 
     tippy('.span-tooltip-2', {
       content: 'В стремлении повысить качество',
       inertia: true,
       theme: 'gray-tablet',
+      trigger: 'click',
     });
 
     tippy('.span-tooltip-4', {
       content: 'Приятно, граждане, наблюдать, как сделанные на базе аналитики выводы вызывают у вас эмоции',
       inertia: true,
       theme: 'gray-tablet',
+      trigger: 'click',
     });
 
+    if(document.querySelector('.project-text__span-tooltip-active')) {
+      for (let i = 0; tooltipArray.length > i; i++) {
+        tooltipArray[i].classList.remove('project-text__span-tooltip-active');
+      }
+    }
+
     for (let i = 0; tooltipArray.length > i; i++) {
-      tooltipArray[i].classList.add('project-text__span-tooltip-tablet');
+      tooltipArray[i].addEventListener('click', addClassTooltip);
     }
   }
 
+
+  function addClassTooltip (ev) {
+    if(!ev.target.classList.contains('project-text__span-tooltip-active') && document.querySelector('.project-text__span-tooltip-active')) {
+      document.querySelector('.project-text__span-tooltip-active').classList.remove('project-text__span-tooltip-active');
+      ev.target.classList.add('project-text__span-tooltip-active');
+    } else if (!ev.target.classList.contains('project-text__span-tooltip-active') && !document.querySelector('.project-text__span-tooltip-active')) {
+      ev.target.classList.add('project-text__span-tooltip-active');
+    } else {
+      ev.target.classList.remove('project-text__span-tooltip-active');
+    }
+  }
 
   $(document).ready(function () {
     $("#nav").on("click", "a", function (event) {
@@ -6993,6 +7020,10 @@
       burgerMenu.classList.remove('wrap-burger-menu-active');
     } else if (document.querySelector('.container-modal-window') && ev.target !== document.querySelector('.container-modal-window') && !ev.target.classList.contains('swiper-slide') && ev.target.classList.contains('bottom-layer-modal-window')) {
       closeModalWindow();
+    } else if (document.querySelector('.dropdown__wrap-hover') && (!ev.target.classList.contains('dropdown__wrap-hover') || ev.target == document.querySelector('.dropdown__wrap-hover').parentElement.children[0])) {
+      closeDropDown();
+    } else if (!ev.target.classList.contains('project-text__span-tooltip') && document.querySelector('.project-text__span-tooltip-active')) {
+      document.querySelector('.project-text__span-tooltip-active').classList.remove('project-text__span-tooltip-active');
     }
   });
 
@@ -7125,7 +7156,7 @@
         modalTitleNameImage.classList.add('modal-window__span-2');
         modalTitleYearImage.classList.add('modal-window__span-3');
         modalImageDescription.classList.add('p', 'modal-window__text-description');
-        buttonCloseWindow.classList.add('modal-window__btn-close');
+        buttonCloseWindow.classList.add('modal-window__btn-close', 'js-focus-visible');
 
         buttonCloseWindow.addEventListener('click', closeModalWindow);
 
@@ -7262,7 +7293,7 @@
         let buttonDeleteCheckbox = document.createElement('button');
 
         wrapSelectedCheckbox.classList.add('wrapper-cheacked-cheackbox', 'active');
-        buttonDeleteCheckbox.classList.add('btn-delete-cheackbox')
+        buttonDeleteCheckbox.classList.add('btn-delete-cheackbox', 'js-focus-visible')
 
         wrapSelectedCheckbox.append(inputs[i].parentNode);
         wrapSelectedCheckbox.append(buttonDeleteCheckbox);
@@ -7314,10 +7345,10 @@
 
   for (let i = 0; dropdownLink.length > i; i++) {
     dropdownLink[i].addEventListener('keydown', function (ev) {
-      console.dir(ev);
       if (ev.code == "Space" || ev.code == "Enter") {
         if (!ev.target.parentNode.children[1].classList.contains('dropdown__wrap-hover')) {
           ev.preventDefault();
+          closeDropDown();
           ev.target.parentNode.children[1].classList.add('dropdown__wrap-hover');
           ev.target.classList.add('dropdown__button-active');
         }
@@ -7346,14 +7377,18 @@
     lastLi = list.children[list.children.length - 1];
     lastLi.addEventListener('keydown', function (ev) {
       if (ev.which == 9) {
-        for (let i = 0; dropdownWrap.length > i; i++) {
-          if (dropdownWrap[i].classList.contains('dropdown__wrap-hover')) {
-            dropdownWrap[i].classList.remove('dropdown__wrap-hover');
-            dropdownWrap[i].parentElement.children[0].classList.remove('dropdown__button-active');
-          }
-        }
+        closeDropDown();
       }
     });
+  }
+
+  function closeDropDown() {
+    for (let i = 0; dropdownWrap.length > i; i++) {
+      if (dropdownWrap[i].classList.contains('dropdown__wrap-hover')) {
+        dropdownWrap[i].classList.remove('dropdown__wrap-hover');
+        dropdownWrap[i].parentElement.children[0].classList.remove('dropdown__button-active');
+      }
+    }
   }
 
   document.querySelector('.contacts-form').addEventListener('submit', (ev) => {

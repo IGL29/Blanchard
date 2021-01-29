@@ -89,6 +89,10 @@ fieldset {
   outline: 2px solid #7943a4;
 }
 
+.js-focus-visible:focus:not(.focus-visible) {
+  outline: none;
+}
+
 .visually-hidden {
   position: absolute !important;
   clip: rect(1px 1px 1px 1px);
