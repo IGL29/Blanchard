@@ -1,41 +1,82 @@
 .project-text__span-tooltip {
   position: relative;
-  display: inline-block;
   width: 16px;
   height: 16px;
   vertical-align: middle;
-  cursor: pointer;
+  cursor: help;
 }
 
-.project-text__span-tooltip::after {
-  content: '';
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background-image: url('../img/tooltip-icon.svg');
-  background-position: center;
-  background-repeat: no-repeat;
-  -webkit-transition: background-image 0.3s;
-  -o-transition: background-image 0.3s;
-  transition: background-image 0.3s;
-}
-
-.project-text__span-tooltip-tablet:focus {
+.project-text__span-tooltip:focus {
   outline: none;
 }
 
-.project-text__span-tooltip-tablet:focus::after {
-  background-image: url('../img/tooltip-icon-active.svg');
+.project-text__span-tooltip::before,
+.project-text__span-tooltip::after {
+    left: 24%;
+    opacity: 0;
+    position: absolute;
+    z-index: -100;
 }
 
-.project-text__span-tooltip:hover::after {
-  background-image: url('../img/tooltip-icon-hover.svg');
+.project-text__span-tooltip:hover::before,
+.project-text__span-tooltip:focus::before,
+.project-text__span-tooltip:hover::after,
+.project-text__span-tooltip:focus::after {
+    opacity: 1;
+    transform: scale(1) translateY(0);
+    z-index: 100; 
 }
 
-.project-text__span-tooltip-tablet:hover::after {
-  background-image: url('../img/tooltip-icon-active.svg');
+.project-text__span-tooltip::before {
+  border-style: solid;
+  border-width: 1em 0.75em 0 0.75em;
+  border-color: #CACACA transparent transparent transparent;
+  bottom: 115%;
+  content: "";
+  margin-left: -0.5em;
+  transition: transform 0.65s cubic-bezier(0.84, -0.18, 0.31, 1.26), opacity 0.65s 0.5s, z-index 0.65s 0.5s;
+  transform:  scale(0.6) translateY(-90%);
+} 
+
+.project-text__span-tooltip:hover::before,
+.project-text__span-tooltip:focus::before {
+  transition: transform 0.65s cubic-bezier(0.84, -0.18, 0.31, 1.26) 0.2s, opacity 0.65s cubic-bezier(0.84, -0.18, 0.31, 1.26) 0.2s;
+}
+
+.project-text__span-tooltip::after {
+  background:#CACACA;
+  bottom: 180%;
+  color: #EDEFF0;
+  text-align: center;
+  font-weight: 600;
+  font-size: 12px;
+  line-height: 16px;
+  content: attr(data-tooltip);
+  margin-left: -8.75em;
+  padding: 1em;
+  transition: opacity 0.65s cubic-bezier(0.84, -0.18, 0.31, 1.26) 0.2s, transform 0.65s cubic-bezier(0.84, -0.18, 0.31, 1.26) 0.2s, z-index 0.65s 0.5s;
+  transform:  scale(0.6) translateY(50%);  
+  width: 17.5em;
+}
+
+.project-text__span-tooltip:hover::after,
+.project-text__span-tooltip:focus::after  {
+  transition: opacity 0.65s cubic-bezier(0.84, -0.18, 0.31, 1.26), transform 0.65s cubic-bezier(0.84, -0.18, 0.31, 1.26), z-index 0.65s;
+}
+
+.tooltip {
+  position: relative;
+  transition: fill 0.65s;
+}
+
+.project-text__span-tooltip:focus .tooltip,
+.tooltip:hover {
+  fill: #9d5cd0;
+}
+
+.project-text__span-tooltip:focus .tooltip__symbol,
+.tooltip:hover .tooltip__symbol {
+  fill: #fff;
 }
 
 .project-text {

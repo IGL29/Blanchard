@@ -22,6 +22,7 @@
   flex: 1 1 30.33%;
   min-width: 290px;
   max-width: 500px;
+  height: initial;
   margin-bottom: 50px;
   -webkit-transform: rotateY(0);
   transform: rotateY(0);
@@ -47,8 +48,8 @@
   position: absolute;
   top: 0;
   left: 0;
-  z-index: -5;
-  width: 100%;
+  z-index: 5;
+  width: 99.5%;
   height: 100%;
   border: 1px solid #cacaca;
 }

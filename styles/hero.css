@@ -213,7 +213,7 @@
   width: 100%;
 }
 
-.swiper-hero .swiper-slide-active {
+.swiper-hero {
   -webkit-animation: pulse 15s linear alternate infinite;
   animation: pulse 15s linear alternate infinite;
 }
@@ -239,7 +239,21 @@
   background-size: cover;
 }
 
-@-webkit-keyframes pulse {
+@keyframes pulse {
+  from {
+    transform: scale(1);
+  }
+
+  50% {
+    transform: scale(1.10);
+  }
+
+  to {
+    transform: scale(1.20);
+  }
+} 
+
+/* @-webkit-keyframes pulse {
   from {
     -webkit-transform: scale(1);
     transform: scale(1);
@@ -291,7 +305,7 @@
     -webkit-transform: scale(1.20);
     transform: scale(1.20);
   }
-}
+} */
 
 .section-hero__block-text {
   position: relative;
