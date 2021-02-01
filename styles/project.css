@@ -1,8 +1,9 @@
 .project-text__span-tooltip {
   position: relative;
+  display: inline-block;
   width: 16px;
   height: 16px;
-  vertical-align: middle;
+  vertical-align: -3px;
   cursor: help;
 }
 
@@ -52,11 +53,19 @@
   font-size: 12px;
   line-height: 16px;
   content: attr(data-tooltip);
-  margin-left: -8.75em;
+  margin-left: -111px;
   padding: 1em;
   transition: opacity 0.65s cubic-bezier(0.84, -0.18, 0.31, 1.26) 0.2s, transform 0.65s cubic-bezier(0.84, -0.18, 0.31, 1.26) 0.2s, z-index 0.65s 0.5s;
   transform:  scale(0.6) translateY(50%);  
-  width: 17.5em;
+  width: 222px;
+}
+
+.project-text__span-tooltip-left::after {
+  margin-left: -8px;
+}
+
+.project-text__span-tooltip-right::after {
+  margin-left: -200px;
 }
 
 .project-text__span-tooltip:hover::after,

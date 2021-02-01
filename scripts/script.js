@@ -31,6 +31,7 @@
   const navList = document.querySelector('.nav__list');
   const categoriesWrapper = document.querySelector('.categories-wrapper');
   const script = document.createElement('script');
+  let tooltip = document.querySelectorAll('.project-text__span-tooltip');
   let scrollY = null;
   let swiperGallery = document.querySelector('.container-gallery');
   let selectedCategoryTab = 3;
@@ -62,6 +63,7 @@
     creatingColumnsCategory ();
     initialSwiperListCard ();
     optimizeSwiperEdition ();
+    setPositionTooltip ();
   });
 
   function optimizeSwiperEdition () {
@@ -775,9 +777,6 @@
     } else if (document.querySelector('.dropdown__wrap-hover') && (!ev.target.classList.contains('dropdown__wrap-hover') || ev.target == document.querySelector('.dropdown__wrap-hover').parentElement.children[0])) {
       closeDropDown();
     }
-    else if (!ev.target.classList.contains('project-text__span-tooltip') && document.querySelector('.project-text__span-tooltip-active')) {
-      document.querySelector('.project-text__span-tooltip-active').classList.remove('project-text__span-tooltip-active');
-    }
   });
 
   function initialSwiperListCard () {
@@ -1046,6 +1045,7 @@
   creatingColumnsCategory ();
   hideSelectedItem ();
   initialSwiperListCard ();
+  setPositionTooltip ();
   optimizeSwiperEdition ();
   optimizationMap ();
 
@@ -1105,6 +1105,34 @@
       }
     }
   }
+
+  function setPositionTooltip () {
+    let viewportWidth = document.documentElement.clientWidth;
+    let elemPosition = null;
+    tooltip.forEach((elem) => {
+      elemPosition = elem.getBoundingClientRect().right;
+      if(elemPosition < 120 && elemPosition !== 0) {
+        if(!elem.classList.contains('project-text__span-tooltip-left') && !elem.classList.contains('project-text__span-tooltip-right')){
+          elem.classList.add('project-text__span-tooltip-left');
+        } else {
+          elem.classList.remove('project-text__span-tooltip-right');
+          elem.classList.add('project-text__span-tooltip-left');
+        }
+      } else if (elemPosition > (viewportWidth - 120)) {
+        if(!elem.classList.contains('project-text__span-tooltip-right') && !elem.classList.contains('project-text__span-tooltip-left')) {
+          elem.classList.add('project-text__span-tooltip-right');
+        } else {
+          elem.classList.remove('project-text__span-tooltip-left');
+          elem.classList.add('project-text__span-tooltip-right');
+        }
+      } else if (elem.classList.contains('project-text__span-tooltip-left')) {
+        elem.classList.remove('project-text__span-tooltip-left');
+      } else if (elem.classList.contains('project-text__span-tooltip-right')) {
+        elem.classList.remove('project-text__span-tooltip-right');
+      }
+    });
+  };
+
 
   document.querySelector('.contacts-form').addEventListener('submit', (ev) => {
     ev.preventDefault();
