@@ -56,6 +56,11 @@
     order: 2;
   }
 
+  .header__row-1 .nav_display-none {
+    display: none;
+    visibility: hidden;
+  }
+
   /* hero */
 
   .container_padding {
@@ -92,6 +97,37 @@
 
   .swiper-slide_background-3 {
     background-image: url('../img/birmingham-museums-3-1024.png');
+  }
+
+  .wrap-burger-menu .nav_display-none {
+    display: flex;
+    visibility: visible;
+  }
+
+  .wrap-burger-menu {
+    padding-top: 104px;
+  }
+
+  .nav {
+    display: block;
+    width: 100%;
+    margin-right: 0;
+    margin-bottom: auto;
+  }
+
+  .nav__list {
+    flex-direction: column;
+    align-items: initial;
+  }
+
+  .nav__item:not(:last-of-type) {
+    margin-bottom: 16px;
+  }
+  
+  .nav__link {
+    padding: 0;
+    font-size: 24px;
+    font-weight: 600;
   }
 
   /* about */
@@ -487,6 +523,10 @@
     outline: none;
   }
 
+  .wrap-burger-menu {
+    padding-bottom: 50px;
+  }
+
   /* gallery */
 
   .gallery-section {
@@ -588,7 +628,7 @@
 
   .tabs-list_item-active::after {
     height: 96%;
-    top: 2px;
+    top: 1px;
   }
 
   .dropdown-list-catalog__wrapper-content {
@@ -1124,6 +1164,18 @@
   .title {
     font-size: 28px;
     line-height: 1.36;
+  }
+
+  .wrap-burger-menu {
+    padding-bottom: 25px;
+  }
+
+  .nav__link {
+    font-size: 16px;
+  }
+
+  .nav__item:not(:last-of-type) {
+    margin-bottom: 0;
   }
 
   /* about */
@@ -1690,9 +1742,29 @@
     display: block;
   }
 
+  .checkbox-wrapper {
+    display: none;
+  }
+
+  .categories-form-active .checkbox-wrapper {
+    display: block;
+  }
+
+  .input-show {
+    display: block;
+  }
+
   .categories-wrapper {
     margin-bottom: 0;
     cursor: pointer;
+  }
+
+  .btn-show-categories {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    border: none;
+    background-color: transparent;
   }
 
   .section-editions__column-1 {
@@ -1745,10 +1817,32 @@
   .checkbox-wrapper:last-of-type {
     margin-bottom: 0;
   }
-
-  .subtitle-edition-categories > .ui-accordion-header-icon::after {
+  
+  .btn-show-categories::after {
+    content: '';
+    position: absolute;
+    width: 12px;
+    height: 12px;
+    top: calc(50% - 6px);
+    right: 6px;
     background-image: url('../img/arrow-categories-320.svg');
-    background-position: center;
+    background-position: right;
+    background-repeat: no-repeat;
+    cursor: pointer;
+    transition: transform 0.3s;
+  }
+
+  .btn-show-categories-active::after {
+    transform: rotateZ(180deg);  
+  }
+
+  .input-show {
+    background-color: transparent;
+    border: none;
+    background-image: url('../img/btn-delete-cheackbox.svg');
+    background-position: right;
+    background-repeat: no-repeat;
+    cursor: pointer;
   }
 
   .checkbox-wrapper {
@@ -1803,6 +1897,10 @@
     background-position: right;
     background-repeat: no-repeat;
     cursor: pointer;
+  }
+
+  .checkbox-wrapper__label {
+    display: block;
   }
 
   .wrapper-cheacked-cheackbox > .checkbox-wrapper {
@@ -1877,11 +1975,6 @@
     margin-bottom: 2px;
   }
 
-  .project-text__span-tooltip::after {
-    /* top: -4px;
-    left: 0; */
-  }
-
   .title-events {
     margin-bottom: 13px;
   }
@@ -1939,18 +2032,6 @@
   .span-tooltip-3 {
     display: none;
   }
-
-  /* .project-text__span-tooltip:hover::after {
-    background-image: url('../img/tooltip-icon.svg');
-  }
-
-  .project-text__span-tooltip-active:hover.project-text__span-tooltip::after {
-    background-image: url('../img/tooltip-icon-active.svg');
-  }
-
-  .project-text__span-tooltip-active.project-text__span-tooltip::after {
-    background-image: url('../img/tooltip-icon-active.svg');
-  } */
 
   .wrapper-partners-card__image {
     padding-bottom: 33%;

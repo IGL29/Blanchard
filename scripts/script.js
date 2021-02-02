@@ -27,9 +27,6 @@
   const inputSearch = document.querySelector('.wrapper-form__input');
   const buttonSearchClosed = document.querySelector('.wrapper-form__btn-close');
   const headerRow1 = document.querySelector('.header__row-1');
-  const nav = document.querySelector('.nav');
-  const navList = document.querySelector('.nav__list');
-  const categoriesWrapper = document.querySelector('.categories-wrapper');
   const script = document.createElement('script');
   let tooltip = document.querySelectorAll('.project-text__span-tooltip');
   let scrollY = null;
@@ -57,9 +54,8 @@
   });
   
   window.addEventListener('resize', function () {
-    showNavigation ();
     optimizeSizeSwiper ();
-    initialCategoriesAccordion ();
+    optimizeCheckbox ();
     creatingColumnsCategory ();
     initialSwiperListCard ();
     optimizeSwiperEdition ();
@@ -318,39 +314,42 @@
     }
   });
 
-  function initialCategoriesAccordion() {
-    if (document.documentElement.clientWidth <= 576) {
-      if (!categoriesWrapper.classList.contains('accordion-categories')) {
-        categoriesWrapper.classList.add('accordion-categories')
-      }
-      $(".accordion-categories").accordion({
-        collapsible: true,
-        heightStyle: 'content',
-        active: true
+  function optimizeCheckbox () {
+    if (document.documentElement.clientWidth <= 576 && !document.querySelector('.btn-show-categories')) {
+  
+      let button = document.createElement('button');
+      button.classList.add('btn-show-categories');
+  
+      button.addEventListener('click', (ev) => {
+        ev.target.classList.toggle('btn-show-categories-active');
+        categoriesCheackBoxes.classList.toggle('categories-form-active');
       });
-      checkingCheckbox();
-
-      categoriesCheackBoxes.addEventListener('change', checkingCheckbox);
-    } else if (categoriesWrapper.classList.contains('accordion-categories')) {
-      $(".accordion-categories").accordion("destroy");
-      categoriesWrapper.classList.remove('accordion-categories')
-      categoriesCheackBoxes.removeEventListener('change', checkingCheckbox);
-
-      if ($('.wrapper-cheacked-cheackbox') !== null) {
-        removeWrapperCheckbox();
-      }
-    }
+  
+      document.querySelector('.subtitle-edition-categories').append(button);
+  
+      let inputs = document.querySelectorAll('.checkbox-wrapper__input');
+      inputs.forEach((input) => {
+        if(input.checked == true) {
+          input.parentElement.classList.add('input-show');
+        }
+      })
+  
+      let checkboxWrapper = document.querySelectorAll('.checkbox-wrapper');
+  
+      checkboxWrapper.forEach((wrapper) => {
+        wrapper.addEventListener('click', function (ev) {
+          if(this.children[0].checked == true) {
+            this.classList.add('input-show');
+          } else {
+            this.classList.remove('input-show');
+          }
+        })
+      })
+    } else if (document.querySelector('.btn-show-categories')) {
+      document.querySelector('.btn-show-categories').remove();
+    };
   }
 
-
-  function removeWrapperCheckbox() {
-    let checkboxes = document.querySelectorAll('.wrapper-cheacked-cheackbox');
-    let countChekboxes = checkboxes.length;
-    for (let i = 0; countChekboxes > i; i++) {
-      categoriesForm.append(checkboxes[i].children[0]);
-      checkboxes[i].remove();
-    }
-  }
   function optimizationMap() {
     if (document.documentElement.clientWidth <= 576) {
       ymaps.ready(initMobile);
@@ -616,7 +615,7 @@
   });
 
   $(document).ready(function () {
-    $("#nav").on("click", "a", function (event) {
+    $("nav").on("click", "a", function (event) {
       event.preventDefault();
       let id = $(this).attr('href'),
         top = $(id).offset().top;
@@ -628,45 +627,13 @@
     });
   });
 
-  function showNavigation() {
-    let headerRow1Elements = headerRow1.children[0].children;
-    let navPresentInHeader = false;
-    let linkPersonalAccount = document.querySelector('.link-personal-account');
-    let navLink = document.querySelectorAll('.nav__link')
-    for (let i = 0; headerRow1Elements.length > i; i++) {
-      if (headerRow1Elements[i] == nav) {
-        navPresentInHeader = true;
-      }
-      if (navPresentInHeader == true && document.documentElement.clientWidth <= 1024) {
-        burgerMenu.insertBefore(nav, linkPersonalAccountBurger);
-        navLink.forEach(function (elem) {
-          elem.classList.add('nav-burger__link');
-        });
-        nav.classList.remove('nav_margin', 'nav_width');
-        nav.classList.add('wrap-burger-menu__nav');
-        navList.classList.remove('flex');
-        navList.classList.add('nav__list_flex_row', 'nav-list-burger');
-        nav.classList.remove('nav_opacity-0');
-      } else if (navPresentInHeader !== true) {
-        headerRow1.children[0].insertBefore(nav, linkPersonalAccount);
-        navLink.forEach(function (elem) {
-          elem.classList.remove('nav-burger__link');
-        });
-        nav.classList.add('nav_margin', 'nav_width');
-        nav.classList.remove('wrap-burger-menu__nav');
-        navList.classList.add('flex');
-        navList.classList.remove('nav__list_flex_row', 'nav-list-burger');
-        nav.classList.remove('nav_display-none');
-      }
-    }
-  }
+  let burgerNavLink = burgerMenu.children[0].children[0].children[0].children[0];
 
   btnBurgerMenu.addEventListener('focusout', function () {
     if (btnBurgerMenu.classList.contains('btn-burger-menu__background-active')) {
-      const linkBurgerMenu = document.querySelector('.nav-burger__link');
-      linkBurgerMenu.focus();
+      burgerNavLink.focus();
     }
-  })
+  });
 
   linkPersonalAccountBurger.addEventListener('focusout', function () {
     btnBurgerMenu.focus();
@@ -741,25 +708,6 @@
       form.classList.add('wrapper-form__form-active');
       buttonSearch.classList.add('wrapper-form__btn-search-active');
       headerRow1.classList.add('search-active');
-      clearTimeout();
-      if (document.documentElement.clientWidth <= 320) {
-        settingFocus(900, inputSearch);
-      } else if (document.documentElement.clientWidth <= 576) {
-        settingFocus(1200, inputSearch);
-      } else if (document.documentElement.clientWidth <= 768) {
-        settingFocus(1000, inputSearch);
-      } else if (document.documentElement.clientWidth <= 1024) {
-        settingFocus(700, inputSearch);
-      }
-
-      function settingFocus(time, inputSearch) {
-        timerId = setTimeout(function () {
-          if (wrapperForm.classList.contains('wrapper-form-active')) {
-            inputSearch.focus();
-          }
-        }, time);
-      }
-
       buttonSearchClosed.setAttribute('tabindex', '0');
     } else if ((!wrapperForm.contains(ev.target) || buttonSearchClosed === ev.target) && wrapperForm.classList.contains('wrapper-form-active')) {
       ev.preventDefault();
@@ -990,58 +938,11 @@
     }
   };
 
-  let inputs = document.querySelectorAll('.checkbox-wrapper__input');
-
-  function checkingCheckbox() {
-    for (let i = 0; inputs.length > i; i++) {
-      if (inputs[i].checked && !inputs[i].parentNode.parentNode.classList.contains('active')) {
-        let wrapSelectedCheckbox = document.createElement('div');
-        let buttonDeleteCheckbox = document.createElement('button');
-
-        wrapSelectedCheckbox.classList.add('wrapper-cheacked-cheackbox', 'active');
-        buttonDeleteCheckbox.classList.add('btn-delete-cheackbox', 'js-focus-visible')
-
-        wrapSelectedCheckbox.append(inputs[i].parentNode);
-        wrapSelectedCheckbox.append(buttonDeleteCheckbox);
-        categoriesWrapper.after(wrapSelectedCheckbox);
-      }
-    }
-    checkingDeletedCheckbox();
-  };
-
-  function checkingDeletedCheckbox() {
-    let wrapperCheackedCheackbox = document.querySelectorAll('.wrapper-cheacked-cheackbox');
-    wrapperCheackedCheackbox.forEach(function (item) {
-      item.addEventListener('click', removeCheckbox);
-    });
-  };
-
-  function removeCheckbox(ev) {
-
-    for (let i = 0; this.children.length > i; i++) {
-      if (ev.target == this.children[i] || ev.target.parentElement == this.children[i]) {
-
-        let checkboxWrapper = this.querySelector('.checkbox-wrapper');
-
-        if (ev.target.classList.contains('btn-delete-cheackbox')) {
-          let input = this.querySelector('.checkbox-wrapper__input');
-          input.checked = false;
-          input.parentNode.parentNode.classList.remove('active');
-        }
-        categoriesForm.append(checkboxWrapper);
-        this.remove();
-        this.removeEventListener('click', removeCheckbox);
-        break;
-      }
-    }
-  };
-
-  showNavigation ();
   optimizeSizeSwiper ();
   activateTab ();
   showPainters ();
   addActiveClassBtn ();
-  initialCategoriesAccordion ();
+  optimizeCheckbox ();
   creatingColumnsCategory ();
   hideSelectedItem ();
   initialSwiperListCard ();

@@ -704,6 +704,7 @@
   cursor: pointer;
 }
 
-.nav_display-none {
-  opacity: 0;
+.wrap-burger-menu .nav_display-none {
+  display: none;
+  visibility: hidden;
 }
