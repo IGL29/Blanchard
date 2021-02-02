@@ -319,6 +319,7 @@
   
       let button = document.createElement('button');
       button.classList.add('btn-show-categories');
+      button.setAttribute('aria-label', 'Раскрыть список категорий');
   
       button.addEventListener('click', (ev) => {
         ev.target.classList.toggle('btn-show-categories-active');
