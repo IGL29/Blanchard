@@ -33,13 +33,14 @@
   let swiperGallery = document.querySelector('.container-gallery');
   let selectedCategoryTab = 3;
   let defaultButton = 'Доменико Гирландайо';
+  let scroll = false;
   let imagePath = null;
   let timerId = null;
   let mySwiperEdition = null;
   let SwiperListCards = null;
-  
+
   let mySwiper = new Swiper('.swiper-container', {
-    
+
     direction: 'horizontal',
     loop: true,
     grabCursor: true,
@@ -52,73 +53,75 @@
       disableOnInteraction: false,
     },
   });
-  
+
   window.addEventListener('resize', function () {
-    optimizeSizeSwiper ();
-    optimizeCheckbox ();
-    creatingColumnsCategory ();
-    initialSwiperListCard ();
-    optimizeSwiperEdition ();
-    setPositionTooltip ();
+    optimizeSizeSwiper();
+    optimizeCheckbox();
+    creatingColumnsCategory();
+    initialSwiperListCard();
+    optimizeSwiperEdition();
+    optimizeScrollInfo();
+    setPositionTooltip();
+    accordioninitial();
   });
 
-  function optimizeSwiperEdition () {
+  function optimizeSwiperEdition() {
     if (document.documentElement.clientWidth > 576) {
       mySwiperEdition = new Swiper('.container-editions', {
-      
+
         direction: 'horizontal',
         loop: true,
         allowTouchMove: false,
-        
+
         pagination: {
           el: '.swiper-pagination-editions',
           type: 'fraction',
           renderFraction: function (currentClass, totalClass) {
             return '<span class="' + currentClass + '"></span>' +
-            '<span aria-label="из"> / </span>' +
-            '<span class="' + totalClass + '"></span>';
+              '<span aria-label="из"> / </span>' +
+              '<span class="' + totalClass + '"></span>';
           },
         },
-        
+
         updateOnWindowResize: false,
-        
+
         keyboard: {
           enabled: true,
           onlyInViewport: true,
         },
-        
+
         navigation: {
           nextEl: '.swiper-button-next-edition',
           prevEl: '.swiper-button-prev-edition',
         },
-        
+
         a11y: {
           prevSlideMessage: 'Предыдущий слайд',
           nextSlideMessage: 'Следующий слайд',
         },
-        
+
         breakpoints: {
-          
+
           1025: {
-            
+
             slidesPerView: 3,
-            
+
             slidesPerGroup: 3,
-            
+
             spaceBetween: 48,
-            
+
             slidesPerColumn: 1,
-            
+
             autoHeight: false,
-            
+
             centeredSlides: false,
-            
+
             initialSlide: 0,
           },
-          
+
           769: {
             slidesPerView: 2,
-            
+
             slidesPerGroup: 2,
 
             spaceBetween: 48,
@@ -126,111 +129,111 @@
             autoHeight: false,
 
             centeredSlides: false,
-            
+
             initialSlide: 0,
           },
-          
+
           576: {
             slidesPerView: 2,
-            
+
             slidesPerGroup: 2,
-            
+
             spaceBetween: 35,
-            
+
             autoHeight: false,
-            
+
             centeredSlides: false,
-            
+
             initialSlide: 0,
           },
         }
       });
     } else if (mySwiperEdition !== null) {
-      mySwiperEdition.destroy ( true, true );
+      mySwiperEdition.destroy(true, true);
     }
   }
-  
+
   function optimizeSizeSwiper() {
     initializationSwiperGallery();
     initializationSwiperPartners();
   }
-  
+
   function initializationSwiperGallery() {
     let mySwiperGallery = new Swiper('.gallery-section__swiper-container', {
-      
+
       direction: 'horizontal',
       allowTouchMove: false,
-      
+
       pagination: {
         el: '.swiper-pagination-gallery',
         type: 'fraction',
       },
-      
+
       navigation: {
         nextEl: '.swiper-button-next-gallery',
         prevEl: '.swiper-button-prev-gallery',
       },
-      
+
       a11y: {
         prevSlideMessage: 'Предыдущий слайд',
         nextSlideMessage: 'Следующий слайд',
       },
 
       breakpoints: {
-        
+
         1200: {
           slidesPerView: 3,
-          
+
           slidesPerGroup: 3,
-          
+
           spaceBetween: 48,
-          
+
           slidesPerColumn: 2,
-          
+
           autoHeight: false,
-          
+
           centeredSlides: false,
-          
+
           allowTouchMove: false,
-          
+
           initialSlide: 0,
         },
-        
+
         577: {
           slidesPerView: 2,
-          
+
           slidesPerGroup: 2,
-          
+
           spaceBetween: 34,
-          
+
           slidesPerColumn: 2,
-          
+
           autoHeight: false,
-          
+
           centeredSlides: false,
-          
+
           allowTouchMove: false,
-          
+
           initialSlide: 0,
         },
-        
+
         320: {
           slidesPerView: 1,
-          
+
           slidesPerGroup: 1,
-          
+
           slidesPerColumn: 1,
-          
+
           slidesPerColumn: 1,
-          
+
           spaceBetween: 20,
-          
+
           allowTouchMove: true,
         },
       }
     });
   }
-  
+
   function initializationSwiperPartners() {
     let mySwiperPartners = new Swiper('.swiper-container-partners', {
 
@@ -299,11 +302,12 @@
     });
   };
 
-  $(function () {
+  function accordioninitial() {
     $("#accordion").accordion({
       collapsible: true,
       heightStyle: 'content',
       header: '> .accordion-item > .accordion-header',
+      active: document.documentElement.clientWidth > 576 ? 0 : false,
     });
 
     if (document.documentElement.clientWidth > 576) {
@@ -312,34 +316,34 @@
         accordionSpan[i].classList.add('ui-accordion-header-icon-hover');
       }
     }
-  });
+  }
 
-  function optimizeCheckbox () {
+  function optimizeCheckbox() {
     if (document.documentElement.clientWidth <= 576 && !document.querySelector('.btn-show-categories')) {
-  
+
       let button = document.createElement('button');
       button.classList.add('btn-show-categories');
       button.setAttribute('aria-label', 'Раскрыть список категорий');
-  
+
       button.addEventListener('click', (ev) => {
         ev.target.classList.toggle('btn-show-categories-active');
         categoriesCheackBoxes.classList.toggle('categories-form-active');
       });
-  
+
       document.querySelector('.subtitle-edition-categories').append(button);
-  
+
       let inputs = document.querySelectorAll('.checkbox-wrapper__input');
       inputs.forEach((input) => {
-        if(input.checked == true) {
+        if (input.checked == true) {
           input.parentElement.classList.add('input-show');
         }
       })
-  
+
       let checkboxWrapper = document.querySelectorAll('.checkbox-wrapper');
-  
+
       checkboxWrapper.forEach((wrapper) => {
         wrapper.addEventListener('click', function (ev) {
-          if(this.children[0].checked == true) {
+          if (this.children[0].checked == true) {
             this.classList.add('input-show');
           } else {
             this.classList.remove('input-show');
@@ -593,7 +597,7 @@
           let button = document.createElement('button');
 
           li.classList.add('selection-list__item');
-          button.classList.add('selection-list__button');
+          button.classList.add('selection-list__button', 'js-focus-visible');
           button.setAttribute('aria-controls', 'painterInfo');
 
           button.textContent = paintersArray[i].name;
@@ -667,18 +671,26 @@
     });
   });
 
-  $(document).ready(function () {
+  function optimizeScrollInfo() {
     if (document.documentElement.clientWidth <= 576) {
-      $(".section-catalog__dropdown-list").on("click", "button", function (event) {
-        event.preventDefault();
-        let id = '#painterInfo',
-          top = $(id).offset().top;
-        $('body,html').animate({
-          scrollTop: top
-        }, 600);
-      });
+      if (scroll == false) {
+        scroll = true;
+        $(".section-catalog__dropdown-list").on("click", "button", scrollInfoAboutPainter);
+      }
+    } else {
+      scroll = false;
+      $(".section-catalog__dropdown-list").off("click", "button", scrollInfoAboutPainter);
     }
-  });
+  }
+
+  function scrollInfoAboutPainter(event) {
+    event.preventDefault();
+    let id = '#painterInfo',
+      top = $(id).offset().top;
+    $('body,html').animate({
+      scrollTop: top
+    }, 600);
+  };
 
   $(document).ready(function () {
     $("#nav-list-burger").on("click", "a", function (event) {
@@ -728,8 +740,8 @@
     }
   });
 
-  function initialSwiperListCard () {
-    if (document.documentElement.clientWidth <= 576 && SwiperListCards == null) {
+  function initialSwiperListCard() {
+    if (document.documentElement.clientWidth < 720 && (SwiperListCards == null || SwiperListCards.destroyed == true)) {
 
       let containerListCard = document.querySelector('.swiper-container-cards');
       let swiperPagination = document.createElement('div');
@@ -749,7 +761,7 @@
         spaceBetween: 15,
       });
 
-    } else if (document.documentElement.clientWidth > 576 && SwiperListCards !== null && SwiperListCards.destroyed !== true) {
+    } else if (document.documentElement.clientWidth > 720 && SwiperListCards !== null && SwiperListCards.destroyed !== true) {
       SwiperListCards.destroy(true, true);
       document.querySelector('.swiper-pagination-cards').remove();
 
@@ -765,21 +777,21 @@
     itemSelectText: '',
     position: 'bottom',
   });
-  
+
   let wrapperChoiseList = document.querySelector('.choices');
   wrapperChoiseList.addEventListener('click', hideSelectedItem);
-  
+
   function hideSelectedItem() {
     let choicesItem = document.querySelector('.choices__list--single').children[0];
     let choicesListDropdown = document.querySelector('.choices__list--dropdown').children[0];
-    
+
     for (let i = 0; choicesListDropdown.childElementCount > i; i++) {
       if (choicesListDropdown.children[i].textContent == choicesItem.textContent) {
         choicesListDropdown.children[i].style.display = 'none';
       }
     }
   }
-  
+
   let namePainter = null;
   let nameImage = null;
   let yearImage = null;
@@ -787,7 +799,7 @@
   let srcImage = null;
 
   galleryImage.forEach(function (item) {
-    item.addEventListener('click', function (ev) {      
+    item.addEventListener('click', function (ev) {
       const picturePath = ev.target.querySelector('.gallery-image').attributes.src.value;
       const pictureAlt = ev.target.querySelector('.gallery-image').attributes.alt.value;
       const pictureId = this.getAttribute('data-id');
@@ -797,7 +809,7 @@
         bottomLayerModal.classList.add('bottom-layer-modal-window');
 
         buildingInfoPicture(pictureId, picturePath);
-        
+
         let modalWindow = `
           <div class="modal-window">
             <div class="modal-window__block-image">
@@ -939,17 +951,19 @@
     }
   };
 
-  optimizeSizeSwiper ();
-  activateTab ();
-  showPainters ();
-  addActiveClassBtn ();
-  optimizeCheckbox ();
-  creatingColumnsCategory ();
-  hideSelectedItem ();
-  initialSwiperListCard ();
-  setPositionTooltip ();
-  optimizeSwiperEdition ();
-  optimizationMap ();
+  optimizeSizeSwiper();
+  activateTab();
+  showPainters();
+  addActiveClassBtn();
+  optimizeCheckbox();
+  creatingColumnsCategory();
+  hideSelectedItem();
+  accordioninitial();
+  initialSwiperListCard();
+  optimizeScrollInfo();
+  setPositionTooltip();
+  optimizeSwiperEdition();
+  optimizationMap();
 
   script.src = "scripts/focus-visible.js";
 
@@ -1008,20 +1022,20 @@
     }
   }
 
-  function setPositionTooltip () {
+  function setPositionTooltip() {
     let viewportWidth = document.documentElement.clientWidth;
     let elemPosition = null;
     tooltip.forEach((elem) => {
       elemPosition = elem.getBoundingClientRect().right;
-      if(elemPosition < 120 && elemPosition !== 0) {
-        if(!elem.classList.contains('project-text__span-tooltip-left') && !elem.classList.contains('project-text__span-tooltip-right')){
+      if (elemPosition < 120 && elemPosition !== 0) {
+        if (!elem.classList.contains('project-text__span-tooltip-left') && !elem.classList.contains('project-text__span-tooltip-right')) {
           elem.classList.add('project-text__span-tooltip-left');
         } else {
           elem.classList.remove('project-text__span-tooltip-right');
           elem.classList.add('project-text__span-tooltip-left');
         }
       } else if (elemPosition > (viewportWidth - 120)) {
-        if(!elem.classList.contains('project-text__span-tooltip-right') && !elem.classList.contains('project-text__span-tooltip-left')) {
+        if (!elem.classList.contains('project-text__span-tooltip-right') && !elem.classList.contains('project-text__span-tooltip-left')) {
           elem.classList.add('project-text__span-tooltip-right');
         } else {
           elem.classList.remove('project-text__span-tooltip-left');
