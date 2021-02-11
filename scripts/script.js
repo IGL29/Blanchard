@@ -1,5 +1,6 @@
-(() => {
-  "use strict";
+"use strict";
+
+document.addEventListener("DOMContentLoaded", () => {
 
   const list_painters = document.querySelector('.section-catalog__dropdown-list');
   const titleNamePainter = document.querySelector('.column-description__subtitle');
@@ -1089,5 +1090,5 @@
     let sectionContacts = document.querySelector('.section-contacts');
     sectionContacts.insertAdjacentHTML('beforeend', modalResponse);
   }
+});
 
-})();
