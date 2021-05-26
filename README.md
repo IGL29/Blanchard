@@ -21,6 +21,6 @@
 + Карта (**API Yandex map**)
 
 ![Скриншот страницы](screenshots/screenshot1.jpg "Скриншот страницы")
-![Скриншот страницы](screenshots/GIF2.jpg "Скриншот страницы")
+![Скриншот страницы](screenshots/GIF2.gif "Скриншот страницы")
 ![Скриншот страницы](screenshots/screenshot3.jpg "Скриншот страницы")
 ![Скриншот страницы](screenshots/screenshot4.jpg "Скриншот страницы")
